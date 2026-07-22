@@ -42,14 +42,21 @@ Windows 11 x64.
 
 The application stores invoice and customer information locally. Generated databases, PDFs, backups, credentials, and signing material must never be committed to Git.
 
+## Local data
+
+Runtime data is stored under:
+
+`%LOCALAPPDATA%\MHC Technology\MHC Invoices V4\`
+
+The SQLite database, generated invoice documents, WebView2 profile, and backups are user data and are never stored beside the executable or committed to Git.
+
 ## Build
 
-The canonical commands will be finalized with the solution scaffold:
-
 ```bash
-dotnet restore
-dotnet build MHC.Invoicing.sln -c Release
-dotnet test MHC.Invoicing.sln -c Release
+dotnet restore MHC.Invoicing.sln --locked-mode
+dotnet format MHC.Invoicing.sln --verify-no-changes --no-restore
+dotnet build MHC.Invoicing.sln -c Release -p:Platform=x64 --no-restore
+dotnet test MHC.Invoicing.sln -c Release -p:Platform=x64 --no-build --collect:"XPlat Code Coverage" --results-directory TestResults --logger trx
 ```
 
 ## Status
