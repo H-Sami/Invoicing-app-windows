@@ -1,0 +1,64 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+artifacts/
+TestResults/
+coverage/
+*.trx
+*.coverage
+*.coveragexml
+
+# Visual Studio and IDE state
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Runtime data and generated documents
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.mhcbak
+*.pdf
+Backups/
+Documents/
+WebView2/
+
+# Credentials, signing, and local configuration
+.env
+.env.*
+*.pfx
+*.p12
+*.pem
+*.key
+*.cer
+*.crt
+*.snk
+secrets.json
+appsettings.Local.json
+
+# Installer output
+installer/Output/
+installer/output/
+*.exe.sha256
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+~$*
