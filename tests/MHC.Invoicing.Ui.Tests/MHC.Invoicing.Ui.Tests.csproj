@@ -12,7 +12,9 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\MHC.Invoicing.App\MHC.Invoicing.App.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\..\src\MHC.Invoicing.App\MHC.Invoicing.App.csproj" />
+    <ProjectReference Include="..\..\src\MHC.Invoicing.Application\MHC.Invoicing.Application.csproj" />
+    <ProjectReference Include="..\..\src\MHC.Invoicing.Domain\MHC.Invoicing.Domain.csproj" />
   </ItemGroup>
 
 </Project>

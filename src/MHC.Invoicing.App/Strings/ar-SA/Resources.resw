@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="AppTitle.Text" xml:space="preserve"><value>فواتير MHC</value></data>
+  <data name="AppSubtitle.Text" xml:space="preserve"><value>إدارة الفواتير المحلية</value></data>
+  <data name="DashboardNav.Content" xml:space="preserve"><value>الرئيسية</value></data>
+  <data name="NewInvoiceNav.Content" xml:space="preserve"><value>فاتورة جديدة</value></data>
+  <data name="InvoicesNav.Content" xml:space="preserve"><value>الفواتير</value></data>
+  <data name="CustomersNav.Content" xml:space="preserve"><value>العملاء</value></data>
+  <data name="ItemsNav.Content" xml:space="preserve"><value>الأصناف والخدمات</value></data>
+  <data name="SettingsNav.Content" xml:space="preserve"><value>الإعدادات</value></data>
+  <data name="StatusReady.Text" xml:space="preserve"><value>جاهز • البيانات محفوظة محلياً</value></data>
+  <data name="DashboardTitle.Text" xml:space="preserve"><value>مرحباً بك</value></data>
+  <data name="DashboardSubtitle.Text" xml:space="preserve"><value>ابدأ فاتورة جديدة أو تابع أحدث أعمالك.</value></data>
+  <data name="NewInvoiceAction.Content" xml:space="preserve"><value>إنشاء فاتورة</value></data>
+  <data name="NewInvoiceAction.AutomationProperties.Name" xml:space="preserve"><value>إنشاء فاتورة جديدة</value></data>
+  <data name="ResumeDraftAction.Content" xml:space="preserve"><value>متابعة المسودة</value></data>
+  <data name="ResumeDraftAction.AutomationProperties.Name" xml:space="preserve"><value>اختيار مسودة محفوظة ومتابعتها</value></data>
+  <data name="ResumeDraftDialog.Title" xml:space="preserve"><value>متابعة مسودة</value></data>
+  <data name="ResumeDraftDialog.EmptyMessage" xml:space="preserve"><value>لا توجد مسودات محفوظة للمتابعة.</value></data>
+  <data name="ResumeDraftDialog.ListAutomationName" xml:space="preserve"><value>مسودات الفواتير المحفوظة</value></data>
+  <data name="ResumeDraftDialog.PrimaryButtonText" xml:space="preserve"><value>متابعة</value></data>
+  <data name="ResumeDraftDialog.LinesSuffix" xml:space="preserve"><value>بنود</value></data>
+  <data name="CommonClose.Content" xml:space="preserve"><value>إغلاق</value></data>
+  <data name="RecentTitle.Text" xml:space="preserve"><value>أحدث الفواتير</value></data>
+  <data name="EmptyRecent.Text" xml:space="preserve"><value>ستظهر الفواتير الصادرة هنا.</value></data>
+  <data name="PeriodLabel.Text" xml:space="preserve"><value>ملخص هذا الشهر</value></data>
+  <data name="InvoiceCountLabel.Text" xml:space="preserve"><value>الفواتير</value></data>
+  <data name="SalesLabel.Text" xml:space="preserve"><value>إجمالي المبيعات</value></data>
+  <data name="DashboardZeroSales.Text" xml:space="preserve"><value>0.00 ر.س</value></data>
+  <data name="EditorTitle.Text" xml:space="preserve"><value>فاتورة ضريبية جديدة</value></data>
+  <data name="CreditNoteEditorTitle.Text" xml:space="preserve"><value>إشعار دائن جديد</value></data>
+  <data name="CreditNoteEditorSubtitle.Text" xml:space="preserve"><value>تعكس هذه المسودة الفاتورة الضريبية المرتبطة ويُنشأ لها رقم مستقل عند الإصدار.</value></data>
+  <data name="CreditNoteDraftBadge.Text" xml:space="preserve"><value>مسودة إشعار دائن</value></data>
+  <data name="CreditNoteIssueAction.Content" xml:space="preserve"><value>إصدار الإشعار الدائن</value></data>
+  <data name="CreditNoteIssueAction.AutomationProperties.Name" xml:space="preserve"><value>إصدار الإشعار الدائن بعد التأكيد</value></data>
+  <data name="DraftBadge.Text" xml:space="preserve"><value>مسودة غير مرقمة</value></data>
+  <data name="CustomerSection.Text" xml:space="preserve"><value>بيانات العميل</value></data>
+  <data name="CustomerSearch.PlaceholderText" xml:space="preserve"><value>ابحث بالاسم أو الرقم الضريبي أو السجل التجاري</value></data>
+  <data name="BusinessDateLabel.Text" xml:space="preserve"><value>تاريخ الفاتورة</value></data>
+  <data name="IssueTimeHint.Text" xml:space="preserve"><value>وقت الإصدار الفعلي يُسجّل تلقائياً بتوقيت السعودية</value></data>
+  <data name="LinesSection.Text" xml:space="preserve"><value>الأصناف والخدمات</value></data>
+  <data name="AddLineAction.Content" xml:space="preserve"><value>إضافة بند</value></data>
+  <data name="EmptyLines.Text" xml:space="preserve"><value>أضف بنداً واحداً على الأقل لإصدار الفاتورة.</value></data>
+  <data name="SubtotalLabel.Text" xml:space="preserve"><value>المجموع قبل الضريبة</value></data>
+  <data name="VatLabel.Text" xml:space="preserve"><value>ضريبة القيمة المضافة</value></data>
+  <data name="GrandTotalLabel.Text" xml:space="preserve"><value>الإجمالي شامل الضريبة</value></data>
+  <data name="SaveState.Text" xml:space="preserve"><value>تم حفظ المسودة</value></data>
+  <data name="IssueAction.Content" xml:space="preserve"><value>مراجعة وإصدار</value></data>
+  <data name="InvoicesTitle.Text" xml:space="preserve"><value>الفواتير</value></data>
+  <data name="InvoicesSubtitle.Text" xml:space="preserve"><value>ابحث واعرض واطبع المستندات المحفوظة دون تعديلها.</value></data>
+  <data name="InvoiceSearch.PlaceholderText" xml:space="preserve"><value>رقم الفاتورة، UUID، العميل، الرقم الضريبي…</value></data>
+  <data name="EmptyInvoices.Text" xml:space="preserve"><value>لا توجد فواتير مطابقة.</value></data>
+  <data name="CustomersTitle.Text" xml:space="preserve"><value>العملاء</value></data>
+  <data name="CustomersSubtitle.Text" xml:space="preserve"><value>دليل موحد لبيانات العملاء المستخدمة في المسودات الجديدة.</value></data>
+  <data name="AddCustomerAction.Content" xml:space="preserve"><value>عميل جديد</value></data>
+  <data name="DirectorySearch.PlaceholderText" xml:space="preserve"><value>البحث في الدليل</value></data>
+  <data name="EmptyCustomers.Text" xml:space="preserve"><value>لم تتم إضافة عملاء بعد.</value></data>
+  <data name="ItemsTitle.Text" xml:space="preserve"><value>الأصناف والخدمات</value></data>
+  <data name="ItemsSubtitle.Text" xml:space="preserve"><value>أسعار افتراضية تساعدك على إضافة بنود الفاتورة بسرعة.</value></data>
+  <data name="AddItemAction.Content" xml:space="preserve"><value>صنف أو خدمة جديدة</value></data>
+  <data name="EmptyItems.Text" xml:space="preserve"><value>لم تتم إضافة أصناف أو خدمات بعد.</value></data>
+  <data name="SettingsTitle.Text" xml:space="preserve"><value>الإعدادات</value></data>
+  <data name="SettingsSubtitle.Text" xml:space="preserve"><value>هوية المنشأة، اللغة، المظهر، النسخ الاحتياطي والاستعادة.</value></data>
+  <data name="CompanySection.Text" xml:space="preserve"><value>بيانات المنشأة</value></data>
+  <data name="CompanyNameLabel.Text" xml:space="preserve"><value>الاسم العربي</value></data>
+  <data name="CompanyName.PlaceholderText" xml:space="preserve"><value>اسم المنشأة</value></data>
+  <data name="VatNumberLabel.Text" xml:space="preserve"><value>الرقم الضريبي</value></data>
+  <data name="VatNumber.PlaceholderText" xml:space="preserve"><value>15 رقماً</value></data>
+  <data name="OperatorLabel.Text" xml:space="preserve"><value>اسم مُصدر الفاتورة</value></data>
+  <data name="OperatorName.PlaceholderText" xml:space="preserve"><value>اسم الموظف</value></data>
+  <data name="CompanyEnglishNameLabel.Text" xml:space="preserve"><value>الاسم الإنجليزي</value></data>
+  <data name="CompanyEnglishName.PlaceholderText" xml:space="preserve"><value>اسم المنشأة بالإنجليزية (اختياري)</value></data>
+  <data name="CommercialRegistrationLabel.Text" xml:space="preserve"><value>السجل التجاري</value></data>
+  <data name="CommercialRegistration.PlaceholderText" xml:space="preserve"><value>رقم السجل التجاري</value></data>
+  <data name="BranchLabel.Text" xml:space="preserve"><value>الفرع</value></data>
+  <data name="Branch.PlaceholderText" xml:space="preserve"><value>الفرع المُصدر</value></data>
+  <data name="CompanyAddressLabel.Text" xml:space="preserve"><value>عنوان المنشأة</value></data>
+  <data name="CompanyAddress.PlaceholderText" xml:space="preserve"><value>العنوان الظاهر على الفواتير</value></data>
+  <data name="DefaultPaymentMethodLabel.Text" xml:space="preserve"><value>طريقة الدفع الافتراضية</value></data>
+  <data name="DefaultPaymentMethodPicker.AutomationProperties.Name" xml:space="preserve"><value>طريقة الدفع الافتراضية للفواتير الجديدة</value></data>
+  <data name="PaymentMethodCash.Content" xml:space="preserve"><value>نقداً</value></data>
+  <data name="PaymentMethodCard.Content" xml:space="preserve"><value>بطاقة</value></data>
+  <data name="PaymentMethodBankTransfer.Content" xml:space="preserve"><value>تحويل بنكي</value></data>
+  <data name="PaymentMethodCredit.Content" xml:space="preserve"><value>آجل</value></data>
+  <data name="PaymentMethodOther.Content" xml:space="preserve"><value>أخرى</value></data>
+  <data name="CompanyLogoLabel.Text" xml:space="preserve"><value>شعار المنشأة</value></data>
+  <data name="ChooseLogoAction.Content" xml:space="preserve"><value>اختيار شعار</value></data>
+  <data name="ChooseLogoAction.AutomationProperties.Name" xml:space="preserve"><value>اختيار شعار منشأة بصيغة PNG أو JPEG</value></data>
+  <data name="RemoveLogoAction.Content" xml:space="preserve"><value>إزالة</value></data>
+  <data name="RemoveLogoAction.AutomationProperties.Name" xml:space="preserve"><value>إزالة شعار المنشأة المحفوظ</value></data>
+  <data name="CompanyLogoNone.Message" xml:space="preserve"><value>لم يتم اختيار شعار</value></data>
+  <data name="CompanyLogoSelected.Message" xml:space="preserve"><value>تم اختيار الشعار</value></data>
+  <data name="CompanyLogoTooLarge.Message" xml:space="preserve"><value>يجب ألا يتجاوز حجم شعار المنشأة 2 ميجابايت.</value></data>
+  <data name="PreferencesSection.Text" xml:space="preserve"><value>التفضيلات</value></data>
+  <data name="LanguageLabel.Text" xml:space="preserve"><value>اللغة</value></data>
+  <data name="ThemeLabel.Text" xml:space="preserve"><value>المظهر</value></data>
+  <data name="SaveSettingsAction.Content" xml:space="preserve"><value>حفظ الإعدادات</value></data>
+  <data name="BackupSection.Text" xml:space="preserve"><value>النسخ الاحتياطي</value></data>
+  <data name="BackupHint.Text" xml:space="preserve"><value>تتضمن النسخة بيانات العملاء والفواتير ومستندات PDF.</value></data>
+  <data name="CreateBackupAction.Content" xml:space="preserve"><value>إنشاء نسخة احتياطية</value></data>
+  <data name="RestoreBackupAction.Content" xml:space="preserve"><value>استعادة نسخة</value></data>
+  <data name="CustomerSearch.AutomationProperties.Name" xml:space="preserve"><value>بحث العميل</value></data>
+  <data name="LanguageArabic.Content" xml:space="preserve"><value>العربية</value></data>
+  <data name="LanguageEnglish.Content" xml:space="preserve"><value>English</value></data>
+  <data name="ThemeSystem.Content" xml:space="preserve"><value>النظام</value></data>
+  <data name="ThemeLight.Content" xml:space="preserve"><value>فاتح</value></data>
+  <data name="ThemeDark.Content" xml:space="preserve"><value>داكن</value></data>
+  <data name="EditorSubtitle.Text" xml:space="preserve"><value>تُحفظ المسودة بدون رقم. يُنشأ الرقم فقط بعد الإصدار.</value></data>
+  <data name="EditorCustomerDateSection.Text" xml:space="preserve"><value>العميل والتاريخ</value></data>
+  <data name="EditorCustomerSearch.PlaceholderText" xml:space="preserve"><value>ابحث باسم العميل أو الرقم الضريبي</value></data>
+  <data name="EditorCustomerSearch.AutomationProperties.Name" xml:space="preserve"><value>بحث العميل</value></data>
+  <data name="CashCustomer.Text" xml:space="preserve"><value>عميل نقدي</value></data>
+  <data name="CustomerSnapshotNameArabic.Header" xml:space="preserve"><value>اسم العميل بالعربية</value></data>
+  <data name="CustomerSnapshotNameEnglish.Header" xml:space="preserve"><value>اسم العميل بالإنجليزية</value></data>
+  <data name="CustomerSnapshotVat.Header" xml:space="preserve"><value>الرقم الضريبي للعميل</value></data>
+  <data name="CustomerSnapshotCr.Header" xml:space="preserve"><value>السجل التجاري</value></data>
+  <data name="CustomerSnapshotAddress.Header" xml:space="preserve"><value>عنوان الفاتورة</value></data>
+  <data name="SaveCustomerSnapshotAction.Content" xml:space="preserve"><value>حفظ بيانات عميل الفاتورة</value></data>
+  <data name="SaveCustomerSnapshotAction.AutomationProperties.Name" xml:space="preserve"><value>حفظ نسخة بيانات العميل القابلة للتعديل لهذه الفاتورة</value></data>
+  <data name="BusinessDatePicker.AutomationProperties.Name" xml:space="preserve"><value>تاريخ الفاتورة</value></data>
+  <data name="EditorLinesSection.Text" xml:space="preserve"><value>بنود الفاتورة</value></data>
+  <data name="AddOneOffLineAction.Content" xml:space="preserve"><value>إضافة بند مخصص</value></data>
+  <data name="AddOneOffLineAction.AutomationProperties.Name" xml:space="preserve"><value>إضافة بند غير موجود في دليل الأصناف</value></data>
+  <data name="AddOneOffLineDialog.Title" xml:space="preserve"><value>إضافة بند فاتورة مخصص</value></data>
+  <data name="AddOneOffLineDialog.PrimaryButtonText" xml:space="preserve"><value>إضافة البند</value></data>
+  <data name="OneOffDescription.Header" xml:space="preserve"><value>الوصف</value></data>
+  <data name="OneOffSku.Header" xml:space="preserve"><value>رمز الصنف (اختياري)</value></data>
+  <data name="OneOffUnit.Header" xml:space="preserve"><value>الوحدة</value></data>
+  <data name="CatalogSearch.PlaceholderText" xml:space="preserve"><value>ابحث في دليل الأصناف لإضافة بند</value></data>
+  <data name="CatalogSearch.AutomationProperties.Name" xml:space="preserve"><value>إضافة صنف من الدليل</value></data>
+  <data name="EditorEmptyLines.Text" xml:space="preserve"><value>لم تُضف بنود بعد</value></data>
+  <data name="InvoiceLines.AutomationProperties.Name" xml:space="preserve"><value>بنود الفاتورة</value></data>
+  <data name="AutosaveStatus.Title" xml:space="preserve"><value>حالة الحفظ</value></data>
+  <data name="AutosaveInitializing.Message" xml:space="preserve"><value>جاري إنشاء المسودة...</value></data>
+  <data name="ValidationErrors.Title" xml:space="preserve"><value>تحقق من البيانات</value></data>
+  <data name="ProfileNotReady.Title" xml:space="preserve"><value>أكمل إعداد المنشأة</value></data>
+  <data name="ProfileNotReady.Message" xml:space="preserve"><value>أدخل بيانات المنشأة والرقم الضريبي المطلوبة قبل إصدار الفاتورة.</value></data>
+  <data name="OpenSettingsAction.Content" xml:space="preserve"><value>فتح الإعدادات</value></data>
+  <data name="OpenSettingsAction.AutomationProperties.Name" xml:space="preserve"><value>فتح الإعدادات لإكمال بيانات المنشأة</value></data>
+  <data name="EditorPreviewAction.Content" xml:space="preserve"><value>معاينة</value></data>
+  <data name="EditorPreviewAction.AutomationProperties.Name" xml:space="preserve"><value>معاينة الفاتورة الصادرة</value></data>
+  <data name="EditorPrintAction.Content" xml:space="preserve"><value>طباعة</value></data>
+  <data name="EditorPrintAction.AutomationProperties.Name" xml:space="preserve"><value>طباعة الفاتورة الصادرة</value></data>
+  <data name="EditorExportAction.Content" xml:space="preserve"><value>تصدير PDF</value></data>
+  <data name="EditorExportAction.AutomationProperties.Name" xml:space="preserve"><value>تصدير الفاتورة الصادرة بصيغة PDF</value></data>
+  <data name="CreditNotePreviewAction.AutomationProperties.Name" xml:space="preserve"><value>معاينة الإشعار الدائن الصادر</value></data>
+  <data name="CreditNotePrintAction.AutomationProperties.Name" xml:space="preserve"><value>طباعة الإشعار الدائن الصادر</value></data>
+  <data name="CreditNoteExportAction.AutomationProperties.Name" xml:space="preserve"><value>تصدير الإشعار الدائن الصادر بصيغة PDF</value></data>
+  <data name="EditorIssueAction.Content" xml:space="preserve"><value>إصدار الفاتورة</value></data>
+  <data name="EditorIssueAction.AutomationProperties.Name" xml:space="preserve"><value>إصدار الفاتورة بعد التأكيد</value></data>
+  <data name="ApplicationServicesUnavailable.Message" xml:space="preserve"><value>خدمات التطبيق غير جاهزة.</value></data>
+  <data name="IssueConfirmation.Title" xml:space="preserve"><value>تأكيد إصدار الفاتورة</value></data>
+  <data name="IssueConfirmation.Message" xml:space="preserve"><value>بعد الإصدار سيُنشأ رقم الفاتورة وتصبح بياناتها غير قابلة للتعديل. هل تريد المتابعة؟</value></data>
+  <data name="IssueConfirmation.PrimaryButtonText" xml:space="preserve"><value>إصدار</value></data>
+  <data name="IssuanceInProgress.Message" xml:space="preserve"><value>جاري إصدار الفاتورة وإنشاء ملف PDF النهائي...</value></data>
+  <data name="CreditNoteIssueConfirmation.Title" xml:space="preserve"><value>تأكيد إصدار الإشعار الدائن</value></data>
+  <data name="CreditNoteIssueConfirmation.Message" xml:space="preserve"><value>بعد الإصدار سيُنشأ رقم الإشعار الدائن وتصبح بياناته غير قابلة للتعديل. هل تريد المتابعة؟</value></data>
+  <data name="CreditNoteIssueConfirmation.PrimaryButtonText" xml:space="preserve"><value>إصدار الإشعار الدائن</value></data>
+  <data name="CreditNoteIssuanceInProgress.Message" xml:space="preserve"><value>جاري إصدار الإشعار الدائن وإنشاء ملف PDF النهائي...</value></data>
+  <data name="CommonCancel.Content" xml:space="preserve"><value>إلغاء</value></data>
+  <data name="IssuedBadge.Format" xml:space="preserve"><value>صدرت برقم {0}</value></data>
+  <data name="AutosaveSaved.Format" xml:space="preserve"><value>تم حفظ المسودة (الإصدار {0}).</value></data>
+  <data name="AutosaveSaving.Message" xml:space="preserve"><value>جارٍ حفظ التغييرات...</value></data>
+  <data name="AutosaveConflict.Message" xml:space="preserve"><value>تعارض حفظ: عُدلت المسودة في عملية أخرى. راجعها قبل المتابعة.</value></data>
+  <data name="AutosaveError.Message" xml:space="preserve"><value>تعذر حفظ المسودة. لم تُصدر الفاتورة.</value></data>
+  <data name="LineWithoutSku.Text" xml:space="preserve"><value>بدون رمز</value></data>
+  <data name="LineQuantity.Header" xml:space="preserve"><value>الكمية</value></data>
+  <data name="LineQuantity.AutomationNameFormat" xml:space="preserve"><value>كمية {0}</value></data>
+  <data name="LineUnitPrice.Header" xml:space="preserve"><value>سعر الوحدة (ر.س)</value></data>
+  <data name="LineUnitPrice.AutomationNameFormat" xml:space="preserve"><value>سعر وحدة {0}</value></data>
+  <data name="LineVatCategory.Header" xml:space="preserve"><value>فئة الضريبة</value></data>
+  <data name="LineVatCategory.AutomationNameFormat" xml:space="preserve"><value>فئة ضريبة {0}</value></data>
+  <data name="VatStandard.Content" xml:space="preserve"><value>15%</value></data>
+  <data name="VatZeroRated.Content" xml:space="preserve"><value>صفرية</value></data>
+  <data name="VatExempt.Content" xml:space="preserve"><value>معفاة</value></data>
+  <data name="LineExemptionCode.Header" xml:space="preserve"><value>رمز سبب الإعفاء/الصفرية</value></data>
+  <data name="LineExemptionCode.AutomationNameFormat" xml:space="preserve"><value>رمز سبب الإعفاء أو الصفرية للبند {0}</value></data>
+  <data name="LineExemptionReason.Header" xml:space="preserve"><value>سبب الإعفاء/الصفرية</value></data>
+  <data name="LineExemptionReason.AutomationNameFormat" xml:space="preserve"><value>سبب الإعفاء أو الصفرية للبند {0}</value></data>
+  <data name="LineSaveAction.Content" xml:space="preserve"><value>حفظ البند</value></data>
+  <data name="LineSaveAction.AutomationNameFormat" xml:space="preserve"><value>حفظ تعديلات بند {0}</value></data>
+  <data name="LineRemoveAction.Content" xml:space="preserve"><value>حذف</value></data>
+  <data name="LineRemoveAction.AutomationNameFormat" xml:space="preserve"><value>حذف بند {0}</value></data>
+  <data name="MoneySar.Format" xml:space="preserve"><value>{0} ر.س</value></data>
+  <data name="ValidationLinesRequired.Message" xml:space="preserve"><value>أضف بنداً واحداً على الأقل</value></data>
+  <data name="ValidationQuantityInvalid.Message" xml:space="preserve"><value>الكمية يجب أن تكون موجبة وبحد أقصى ثلاث منازل عشرية</value></data>
+  <data name="ValidationUnitPriceInvalid.Message" xml:space="preserve"><value>سعر الوحدة غير صالح</value></data>
+  <data name="ValidationExemptionRequired.Message" xml:space="preserve"><value>أدخل رمز وسبب الإعفاء أو النسبة الصفرية</value></data>
+  <data name="IssuedPdfNotFound.Message" xml:space="preserve"><value>لم يُعثر على ملف PDF للفاتورة الصادرة.</value></data>
+  <data name="UserError.InvoiceNotFound.Message" xml:space="preserve"><value>لم تعد الفاتورة المحددة موجودة. حدّث القائمة ثم أعد المحاولة.</value></data>
+  <data name="UserError.InvoiceAlreadyVoided.Message" xml:space="preserve"><value>أُبطلت هذه الفاتورة مسبقًا.</value></data>
+  <data name="UserError.InvalidInput.Message" xml:space="preserve"><value>راجع المعلومات المدخلة ثم أعد المحاولة.</value></data>
+  <data name="UserError.FileOperation.Message" xml:space="preserve"><value>تعذر فتح ملف PDF أو حفظه. تحقق من صلاحية الوصول إلى الملف ثم أعد المحاولة.</value></data>
+  <data name="UserError.DataOperation.Message" xml:space="preserve"><value>تعذر إكمال عملية البيانات. أغلق النسخ الأخرى من البرنامج ثم أعد المحاولة.</value></data>
+  <data name="UserError.Unexpected.Message" xml:space="preserve"><value>تعذر إكمال العملية. أعد المحاولة، وإذا استمرت المشكلة فأعد تشغيل البرنامج.</value></data>
+  <data name="InvoiceSearch.AutomationProperties.Name" xml:space="preserve"><value>بحث الفواتير برقمها أو العميل أو UUID</value></data>
+  <data name="InvoiceList.AutomationProperties.Name" xml:space="preserve"><value>سجل الفواتير النهائية</value></data>
+  <data name="InvoicePreviewAction.Content" xml:space="preserve"><value>عرض PDF</value></data>
+  <data name="InvoicePreviewAction.AutomationProperties.Name" xml:space="preserve"><value>عرض ملف PDF النهائي</value></data>
+  <data name="InvoicePrintAction.Content" xml:space="preserve"><value>طباعة</value></data>
+  <data name="InvoicePrintAction.AutomationProperties.Name" xml:space="preserve"><value>طباعة ملف PDF النهائي</value></data>
+  <data name="InvoiceExportAction.Content" xml:space="preserve"><value>تصدير PDF</value></data>
+  <data name="InvoiceExportAction.AutomationProperties.Name" xml:space="preserve"><value>تصدير ملف PDF النهائي</value></data>
+  <data name="InvoiceDuplicateAction.Content" xml:space="preserve"><value>نسخ كمسودة</value></data>
+  <data name="InvoiceDuplicateAction.AutomationProperties.Name" xml:space="preserve"><value>نسخ الفاتورة كمسودة جديدة</value></data>
+  <data name="InvoiceCreditNoteAction.Content" xml:space="preserve"><value>إنشاء إشعار دائن</value></data>
+  <data name="InvoiceCreditNoteAction.AutomationProperties.Name" xml:space="preserve"><value>إنشاء مسودة إشعار دائن مرتبطة بالفاتورة</value></data>
+  <data name="InvoiceVoidAction.Content" xml:space="preserve"><value>إبطال</value></data>
+  <data name="InvoiceVoidAction.AutomationProperties.Name" xml:space="preserve"><value>إبطال الفاتورة للمرة الأولى</value></data>
+  <data name="DatabaseOpenFailure.Message" xml:space="preserve"><value>تعذر فتح قاعدة البيانات.</value></data>
+  <data name="InvoicePreviewSuccess.Message" xml:space="preserve"><value>تم عرض ملف PDF النهائي.</value></data>
+  <data name="InvoicePreviewDialog.TitleFormat" xml:space="preserve"><value>الفاتورة {0}</value></data>
+  <data name="InvoicePreviewDialog.AutomationNameFormat" xml:space="preserve"><value>معاينة ملف PDF النهائي للفاتورة {0}</value></data>
+  <data name="CreditNotePreviewDialog.TitleFormat" xml:space="preserve"><value>الإشعار الدائن {0}</value></data>
+  <data name="CreditNotePreviewDialog.AutomationNameFormat" xml:space="preserve"><value>معاينة ملف PDF النهائي للإشعار الدائن {0}</value></data>
+  <data name="DocumentType.TaxInvoice" xml:space="preserve"><value>فاتورة ضريبية</value></data>
+  <data name="DocumentType.CreditNote" xml:space="preserve"><value>إشعار دائن</value></data>
+  <data name="DocumentRow.AutomationNameFormat" xml:space="preserve"><value>{0} {1}، العميل {2}، التاريخ {3}، الإجمالي {4}</value></data>
+  <data name="InvoicePrintSuccess.Message" xml:space="preserve"><value>تم إرسال ملف PDF النهائي للطباعة.</value></data>
+  <data name="InvoiceExportCancelled.Message" xml:space="preserve"><value>تم إلغاء التصدير.</value></data>
+  <data name="InvoiceExportSuccess.Message" xml:space="preserve"><value>تم تصدير ملف PDF النهائي.</value></data>
+  <data name="InvoiceDuplicateSuccess.Format" xml:space="preserve"><value>تم إنشاء مسودة جديدة: {0:D}</value></data>
+  <data name="VoidReason.Header" xml:space="preserve"><value>سبب الإبطال</value></data>
+  <data name="VoidReason.AutomationProperties.Name" xml:space="preserve"><value>سبب إبطال الفاتورة</value></data>
+  <data name="VoidOperator.Header" xml:space="preserve"><value>اسم المشغل</value></data>
+  <data name="VoidOperator.AutomationProperties.Name" xml:space="preserve"><value>اسم مشغل الإبطال</value></data>
+  <data name="VoidConfirmation.Title" xml:space="preserve"><value>تأكيد إبطال الفاتورة</value></data>
+  <data name="VoidConfirmation.PrimaryButtonText" xml:space="preserve"><value>إبطال نهائي</value></data>
+  <data name="InvoiceVoidSuccess.Message" xml:space="preserve"><value>تم تسجيل الإبطال. لا يمكن إبطال الفاتورة مرة أخرى.</value></data>
+  <data name="DefaultPdfViewerFailure.Message" xml:space="preserve"><value>تعذر فتح عارض PDF الافتراضي.</value></data>
+  <data name="PdfFileType.DisplayName" xml:space="preserve"><value>ملف PDF</value></data>
+  <data name="CompanyName.AutomationProperties.Name" xml:space="preserve"><value>اسم المنشأة العربي</value></data>
+  <data name="CompanyEnglishName.AutomationProperties.Name" xml:space="preserve"><value>اسم المنشأة الإنجليزي</value></data>
+  <data name="CommercialRegistration.AutomationProperties.Name" xml:space="preserve"><value>السجل التجاري للمنشأة</value></data>
+  <data name="Branch.AutomationProperties.Name" xml:space="preserve"><value>الفرع المُصدر</value></data>
+  <data name="CompanyAddress.AutomationProperties.Name" xml:space="preserve"><value>عنوان المنشأة على الفواتير</value></data>
+  <data name="VatNumber.AutomationProperties.Name" xml:space="preserve"><value>الرقم الضريبي للمنشأة</value></data>
+  <data name="OperatorName.AutomationProperties.Name" xml:space="preserve"><value>اسم مُصدر الفاتورة</value></data>
+  <data name="LanguagePicker.AutomationProperties.Name" xml:space="preserve"><value>لغة التطبيق</value></data>
+  <data name="ThemePicker.AutomationProperties.Name" xml:space="preserve"><value>مظهر التطبيق</value></data>
+  <data name="SaveSettingsAction.AutomationProperties.Name" xml:space="preserve"><value>حفظ بيانات المنشأة وإعدادات اللغة والمظهر</value></data>
+  <data name="CreateBackupAction.AutomationProperties.Name" xml:space="preserve"><value>إنشاء نسخة احتياطية آمنة</value></data>
+  <data name="RestoreBackupAction.AutomationProperties.Name" xml:space="preserve"><value>استعادة نسخة احتياطية بعد التأكيد</value></data>
+  <data name="MaintenanceProgress.AutomationProperties.Name" xml:space="preserve"><value>عملية صيانة قاعدة البيانات قيد التنفيذ</value></data>
+  <data name="DatabaseAccessFailure.Message" xml:space="preserve"><value>تعذر الوصول إلى قاعدة البيانات.</value></data>
+  <data name="BackupFileType.DisplayName" xml:space="preserve"><value>نسخة MHC الاحتياطية</value></data>
+  <data name="BackupCreated.Format" xml:space="preserve"><value>تم إنشاء النسخة الاحتياطية: {0}</value></data>
+  <data name="RestoreConfirmation.Title" xml:space="preserve"><value>تأكيد الاستعادة</value></data>
+  <data name="RestoreConfirmation.Message" xml:space="preserve"><value>ستُستبدل البيانات الحالية بالنسخة المحددة. يجب إغلاق أي عمل جارٍ قبل المتابعة، وستُحفظ آثار الاسترداد عند تعذر الرجوع الآمن.</value></data>
+  <data name="RestoreConfirmation.PrimaryButtonText" xml:space="preserve"><value>استعادة البيانات</value></data>
+  <data name="RestoreSuccess.Message" xml:space="preserve"><value>اكتملت الاستعادة وفُتحت قاعدة البيانات وتحققت سلامتها.</value></data>
+  <data name="RestoreNoArtifacts.Message" xml:space="preserve"><value>لا توجد مسارات آثار مُبلّغ عنها.</value></data>
+  <data name="RestoreFailure.Format" xml:space="preserve"><value>فشلت الاستعادة. آثار الاسترداد المحتفظ بها:{0}{1}</value></data>
+  <data name="CompanyProfileLoadFailure.Message" xml:space="preserve"><value>تعذر تحميل بيانات المنشأة.</value></data>
+  <data name="CompanyProfileConflict.Message" xml:space="preserve"><value>تغيرت بيانات المنشأة في عملية أخرى. أعد فتح الإعدادات ثم حاول مجدداً.</value></data>
+  <data name="CompanyProfileValidation.Message" xml:space="preserve"><value>أدخل اسم المنشأة والرقم الضريبي المكوّن من 15 رقماً والفرع والعنوان واسم المُصدر.</value></data>
+  <data name="SettingsSaved.Message" xml:space="preserve"><value>تم حفظ بيانات المنشأة وإعدادات التطبيق.</value></data>
+  <data name="SettingsSaveFailure.Message" xml:space="preserve"><value>تعذر حفظ الإعدادات بأمان.</value></data>
+</root>

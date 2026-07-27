@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="AppTitle.Text" xml:space="preserve"><value>MHC Invoices</value></data>
+  <data name="AppSubtitle.Text" xml:space="preserve"><value>Local invoice management</value></data>
+  <data name="DashboardNav.Content" xml:space="preserve"><value>Dashboard</value></data>
+  <data name="NewInvoiceNav.Content" xml:space="preserve"><value>New invoice</value></data>
+  <data name="InvoicesNav.Content" xml:space="preserve"><value>Invoices</value></data>
+  <data name="CustomersNav.Content" xml:space="preserve"><value>Customers</value></data>
+  <data name="ItemsNav.Content" xml:space="preserve"><value>Items &amp; services</value></data>
+  <data name="SettingsNav.Content" xml:space="preserve"><value>Settings</value></data>
+  <data name="StatusReady.Text" xml:space="preserve"><value>Ready • data is stored locally</value></data>
+  <data name="DashboardTitle.Text" xml:space="preserve"><value>Welcome</value></data>
+  <data name="DashboardSubtitle.Text" xml:space="preserve"><value>Create a new invoice or continue recent work.</value></data>
+  <data name="NewInvoiceAction.Content" xml:space="preserve"><value>Create invoice</value></data>
+  <data name="NewInvoiceAction.AutomationProperties.Name" xml:space="preserve"><value>Create a new invoice</value></data>
+  <data name="ResumeDraftAction.Content" xml:space="preserve"><value>Resume draft</value></data>
+  <data name="ResumeDraftAction.AutomationProperties.Name" xml:space="preserve"><value>Choose and resume a saved draft</value></data>
+  <data name="ResumeDraftDialog.Title" xml:space="preserve"><value>Resume a draft</value></data>
+  <data name="ResumeDraftDialog.EmptyMessage" xml:space="preserve"><value>There are no saved drafts to resume.</value></data>
+  <data name="ResumeDraftDialog.ListAutomationName" xml:space="preserve"><value>Saved invoice drafts</value></data>
+  <data name="ResumeDraftDialog.PrimaryButtonText" xml:space="preserve"><value>Resume</value></data>
+  <data name="ResumeDraftDialog.LinesSuffix" xml:space="preserve"><value>lines</value></data>
+  <data name="CommonClose.Content" xml:space="preserve"><value>Close</value></data>
+  <data name="RecentTitle.Text" xml:space="preserve"><value>Recent invoices</value></data>
+  <data name="EmptyRecent.Text" xml:space="preserve"><value>Issued invoices will appear here.</value></data>
+  <data name="PeriodLabel.Text" xml:space="preserve"><value>This month</value></data>
+  <data name="InvoiceCountLabel.Text" xml:space="preserve"><value>Invoices</value></data>
+  <data name="SalesLabel.Text" xml:space="preserve"><value>Total sales</value></data>
+  <data name="DashboardZeroSales.Text" xml:space="preserve"><value>0.00 SAR</value></data>
+  <data name="EditorTitle.Text" xml:space="preserve"><value>New tax invoice</value></data>
+  <data name="CreditNoteEditorTitle.Text" xml:space="preserve"><value>New credit note</value></data>
+  <data name="CreditNoteEditorSubtitle.Text" xml:space="preserve"><value>This draft reverses the linked tax invoice and receives its own number when issued.</value></data>
+  <data name="CreditNoteDraftBadge.Text" xml:space="preserve"><value>Credit note draft</value></data>
+  <data name="CreditNoteIssueAction.Content" xml:space="preserve"><value>Issue credit note</value></data>
+  <data name="CreditNoteIssueAction.AutomationProperties.Name" xml:space="preserve"><value>Issue the credit note after confirmation</value></data>
+  <data name="DraftBadge.Text" xml:space="preserve"><value>Unnumbered draft</value></data>
+  <data name="CustomerSection.Text" xml:space="preserve"><value>Customer details</value></data>
+  <data name="CustomerSearch.PlaceholderText" xml:space="preserve"><value>Search by name, VAT number, or registration</value></data>
+  <data name="BusinessDateLabel.Text" xml:space="preserve"><value>Invoice date</value></data>
+  <data name="IssueTimeHint.Text" xml:space="preserve"><value>Actual issuance time is recorded automatically in Saudi time</value></data>
+  <data name="LinesSection.Text" xml:space="preserve"><value>Items and services</value></data>
+  <data name="AddLineAction.Content" xml:space="preserve"><value>Add line</value></data>
+  <data name="EmptyLines.Text" xml:space="preserve"><value>Add at least one line before issuing.</value></data>
+  <data name="SubtotalLabel.Text" xml:space="preserve"><value>Subtotal</value></data>
+  <data name="VatLabel.Text" xml:space="preserve"><value>VAT</value></data>
+  <data name="GrandTotalLabel.Text" xml:space="preserve"><value>Total including VAT</value></data>
+  <data name="SaveState.Text" xml:space="preserve"><value>Draft saved</value></data>
+  <data name="IssueAction.Content" xml:space="preserve"><value>Review and issue</value></data>
+  <data name="InvoicesTitle.Text" xml:space="preserve"><value>Invoices</value></data>
+  <data name="InvoicesSubtitle.Text" xml:space="preserve"><value>Search, view, and print immutable stored documents.</value></data>
+  <data name="InvoiceSearch.PlaceholderText" xml:space="preserve"><value>Invoice number, UUID, customer, VAT number…</value></data>
+  <data name="EmptyInvoices.Text" xml:space="preserve"><value>No matching invoices.</value></data>
+  <data name="CustomersTitle.Text" xml:space="preserve"><value>Customers</value></data>
+  <data name="CustomersSubtitle.Text" xml:space="preserve"><value>A reusable customer directory for new drafts.</value></data>
+  <data name="AddCustomerAction.Content" xml:space="preserve"><value>New customer</value></data>
+  <data name="DirectorySearch.PlaceholderText" xml:space="preserve"><value>Search directory</value></data>
+  <data name="EmptyCustomers.Text" xml:space="preserve"><value>No customers have been added.</value></data>
+  <data name="ItemsTitle.Text" xml:space="preserve"><value>Items &amp; services</value></data>
+  <data name="ItemsSubtitle.Text" xml:space="preserve"><value>Default prices make invoice lines faster to create.</value></data>
+  <data name="AddItemAction.Content" xml:space="preserve"><value>New item or service</value></data>
+  <data name="EmptyItems.Text" xml:space="preserve"><value>No items or services have been added.</value></data>
+  <data name="SettingsTitle.Text" xml:space="preserve"><value>Settings</value></data>
+  <data name="SettingsSubtitle.Text" xml:space="preserve"><value>Company identity, language, theme, backup, and restore.</value></data>
+  <data name="CompanySection.Text" xml:space="preserve"><value>Company profile</value></data>
+  <data name="CompanyNameLabel.Text" xml:space="preserve"><value>Arabic name</value></data>
+  <data name="CompanyName.PlaceholderText" xml:space="preserve"><value>Company name</value></data>
+  <data name="VatNumberLabel.Text" xml:space="preserve"><value>VAT number</value></data>
+  <data name="VatNumber.PlaceholderText" xml:space="preserve"><value>15 digits</value></data>
+  <data name="OperatorLabel.Text" xml:space="preserve"><value>Invoice operator</value></data>
+  <data name="OperatorName.PlaceholderText" xml:space="preserve"><value>Employee name</value></data>
+  <data name="CompanyEnglishNameLabel.Text" xml:space="preserve"><value>English name</value></data>
+  <data name="CompanyEnglishName.PlaceholderText" xml:space="preserve"><value>Optional English company name</value></data>
+  <data name="CommercialRegistrationLabel.Text" xml:space="preserve"><value>Commercial registration</value></data>
+  <data name="CommercialRegistration.PlaceholderText" xml:space="preserve"><value>Commercial registration number</value></data>
+  <data name="BranchLabel.Text" xml:space="preserve"><value>Branch</value></data>
+  <data name="Branch.PlaceholderText" xml:space="preserve"><value>Issuing branch</value></data>
+  <data name="CompanyAddressLabel.Text" xml:space="preserve"><value>Company address</value></data>
+  <data name="CompanyAddress.PlaceholderText" xml:space="preserve"><value>Address shown on invoices</value></data>
+  <data name="DefaultPaymentMethodLabel.Text" xml:space="preserve"><value>Default payment method</value></data>
+  <data name="DefaultPaymentMethodPicker.AutomationProperties.Name" xml:space="preserve"><value>Default payment method for new invoices</value></data>
+  <data name="PaymentMethodCash.Content" xml:space="preserve"><value>Cash</value></data>
+  <data name="PaymentMethodCard.Content" xml:space="preserve"><value>Card</value></data>
+  <data name="PaymentMethodBankTransfer.Content" xml:space="preserve"><value>Bank transfer</value></data>
+  <data name="PaymentMethodCredit.Content" xml:space="preserve"><value>Credit</value></data>
+  <data name="PaymentMethodOther.Content" xml:space="preserve"><value>Other</value></data>
+  <data name="CompanyLogoLabel.Text" xml:space="preserve"><value>Company logo</value></data>
+  <data name="ChooseLogoAction.Content" xml:space="preserve"><value>Choose logo</value></data>
+  <data name="ChooseLogoAction.AutomationProperties.Name" xml:space="preserve"><value>Choose a PNG or JPEG company logo</value></data>
+  <data name="RemoveLogoAction.Content" xml:space="preserve"><value>Remove</value></data>
+  <data name="RemoveLogoAction.AutomationProperties.Name" xml:space="preserve"><value>Remove the saved company logo</value></data>
+  <data name="CompanyLogoNone.Message" xml:space="preserve"><value>No logo selected</value></data>
+  <data name="CompanyLogoSelected.Message" xml:space="preserve"><value>Logo selected</value></data>
+  <data name="CompanyLogoTooLarge.Message" xml:space="preserve"><value>The company logo cannot exceed 2 MB.</value></data>
+  <data name="PreferencesSection.Text" xml:space="preserve"><value>Preferences</value></data>
+  <data name="LanguageLabel.Text" xml:space="preserve"><value>Language</value></data>
+  <data name="ThemeLabel.Text" xml:space="preserve"><value>Theme</value></data>
+  <data name="SaveSettingsAction.Content" xml:space="preserve"><value>Save settings</value></data>
+  <data name="BackupSection.Text" xml:space="preserve"><value>Backup</value></data>
+  <data name="BackupHint.Text" xml:space="preserve"><value>Backups contain customer, invoice, and PDF data.</value></data>
+  <data name="CreateBackupAction.Content" xml:space="preserve"><value>Create backup</value></data>
+  <data name="RestoreBackupAction.Content" xml:space="preserve"><value>Restore backup</value></data>
+  <data name="CustomerSearch.AutomationProperties.Name" xml:space="preserve"><value>Customer search</value></data>
+  <data name="LanguageArabic.Content" xml:space="preserve"><value>العربية</value></data>
+  <data name="LanguageEnglish.Content" xml:space="preserve"><value>English</value></data>
+  <data name="ThemeSystem.Content" xml:space="preserve"><value>System</value></data>
+  <data name="ThemeLight.Content" xml:space="preserve"><value>Light</value></data>
+  <data name="ThemeDark.Content" xml:space="preserve"><value>Dark</value></data>
+  <data name="EditorSubtitle.Text" xml:space="preserve"><value>The draft is saved without a number. A number is created only when it is issued.</value></data>
+  <data name="EditorCustomerDateSection.Text" xml:space="preserve"><value>Customer and date</value></data>
+  <data name="EditorCustomerSearch.PlaceholderText" xml:space="preserve"><value>Search by customer name or VAT number</value></data>
+  <data name="EditorCustomerSearch.AutomationProperties.Name" xml:space="preserve"><value>Customer search</value></data>
+  <data name="CashCustomer.Text" xml:space="preserve"><value>Cash customer</value></data>
+  <data name="CustomerSnapshotNameArabic.Header" xml:space="preserve"><value>Customer name (Arabic)</value></data>
+  <data name="CustomerSnapshotNameEnglish.Header" xml:space="preserve"><value>Customer name (English)</value></data>
+  <data name="CustomerSnapshotVat.Header" xml:space="preserve"><value>Customer VAT number</value></data>
+  <data name="CustomerSnapshotCr.Header" xml:space="preserve"><value>Commercial registration</value></data>
+  <data name="CustomerSnapshotAddress.Header" xml:space="preserve"><value>Invoice address</value></data>
+  <data name="SaveCustomerSnapshotAction.Content" xml:space="preserve"><value>Save invoice customer details</value></data>
+  <data name="SaveCustomerSnapshotAction.AutomationProperties.Name" xml:space="preserve"><value>Save the editable customer snapshot for this invoice</value></data>
+  <data name="BusinessDatePicker.AutomationProperties.Name" xml:space="preserve"><value>Invoice date</value></data>
+  <data name="EditorLinesSection.Text" xml:space="preserve"><value>Invoice lines</value></data>
+  <data name="AddOneOffLineAction.Content" xml:space="preserve"><value>Add one-off line</value></data>
+  <data name="AddOneOffLineAction.AutomationProperties.Name" xml:space="preserve"><value>Add a line that is not in the item catalog</value></data>
+  <data name="AddOneOffLineDialog.Title" xml:space="preserve"><value>Add one-off invoice line</value></data>
+  <data name="AddOneOffLineDialog.PrimaryButtonText" xml:space="preserve"><value>Add line</value></data>
+  <data name="OneOffDescription.Header" xml:space="preserve"><value>Description</value></data>
+  <data name="OneOffSku.Header" xml:space="preserve"><value>SKU (optional)</value></data>
+  <data name="OneOffUnit.Header" xml:space="preserve"><value>Unit</value></data>
+  <data name="CatalogSearch.PlaceholderText" xml:space="preserve"><value>Search the item catalog to add a line</value></data>
+  <data name="CatalogSearch.AutomationProperties.Name" xml:space="preserve"><value>Add an item from the catalog</value></data>
+  <data name="EditorEmptyLines.Text" xml:space="preserve"><value>No lines have been added</value></data>
+  <data name="InvoiceLines.AutomationProperties.Name" xml:space="preserve"><value>Invoice lines</value></data>
+  <data name="AutosaveStatus.Title" xml:space="preserve"><value>Save status</value></data>
+  <data name="AutosaveInitializing.Message" xml:space="preserve"><value>Creating the draft...</value></data>
+  <data name="ValidationErrors.Title" xml:space="preserve"><value>Check the information</value></data>
+  <data name="ProfileNotReady.Title" xml:space="preserve"><value>Complete company setup</value></data>
+  <data name="ProfileNotReady.Message" xml:space="preserve"><value>Add the required company and VAT details before issuing an invoice.</value></data>
+  <data name="OpenSettingsAction.Content" xml:space="preserve"><value>Open settings</value></data>
+  <data name="OpenSettingsAction.AutomationProperties.Name" xml:space="preserve"><value>Open Settings to complete the company profile</value></data>
+  <data name="EditorPreviewAction.Content" xml:space="preserve"><value>Preview</value></data>
+  <data name="EditorPreviewAction.AutomationProperties.Name" xml:space="preserve"><value>Preview the issued invoice</value></data>
+  <data name="EditorPrintAction.Content" xml:space="preserve"><value>Print</value></data>
+  <data name="EditorPrintAction.AutomationProperties.Name" xml:space="preserve"><value>Print the issued invoice</value></data>
+  <data name="EditorExportAction.Content" xml:space="preserve"><value>Export PDF</value></data>
+  <data name="EditorExportAction.AutomationProperties.Name" xml:space="preserve"><value>Export the issued invoice as PDF</value></data>
+  <data name="CreditNotePreviewAction.AutomationProperties.Name" xml:space="preserve"><value>Preview the issued credit note</value></data>
+  <data name="CreditNotePrintAction.AutomationProperties.Name" xml:space="preserve"><value>Print the issued credit note</value></data>
+  <data name="CreditNoteExportAction.AutomationProperties.Name" xml:space="preserve"><value>Export the issued credit note as PDF</value></data>
+  <data name="EditorIssueAction.Content" xml:space="preserve"><value>Issue invoice</value></data>
+  <data name="EditorIssueAction.AutomationProperties.Name" xml:space="preserve"><value>Issue the invoice after confirmation</value></data>
+  <data name="ApplicationServicesUnavailable.Message" xml:space="preserve"><value>Application services are not ready.</value></data>
+  <data name="IssueConfirmation.Title" xml:space="preserve"><value>Confirm invoice issuance</value></data>
+  <data name="IssueConfirmation.Message" xml:space="preserve"><value>Issuing creates the invoice number and makes its information immutable. Do you want to continue?</value></data>
+  <data name="IssueConfirmation.PrimaryButtonText" xml:space="preserve"><value>Issue</value></data>
+  <data name="IssuanceInProgress.Message" xml:space="preserve"><value>Issuing the invoice and generating its final PDF...</value></data>
+  <data name="CreditNoteIssueConfirmation.Title" xml:space="preserve"><value>Confirm credit note issuance</value></data>
+  <data name="CreditNoteIssueConfirmation.Message" xml:space="preserve"><value>Issuing creates the credit note number and makes its information immutable. Do you want to continue?</value></data>
+  <data name="CreditNoteIssueConfirmation.PrimaryButtonText" xml:space="preserve"><value>Issue credit note</value></data>
+  <data name="CreditNoteIssuanceInProgress.Message" xml:space="preserve"><value>Issuing the credit note and generating its final PDF...</value></data>
+  <data name="CommonCancel.Content" xml:space="preserve"><value>Cancel</value></data>
+  <data name="IssuedBadge.Format" xml:space="preserve"><value>Issued as {0}</value></data>
+  <data name="AutosaveSaved.Format" xml:space="preserve"><value>Draft saved (revision {0}).</value></data>
+  <data name="AutosaveSaving.Message" xml:space="preserve"><value>Saving changes...</value></data>
+  <data name="AutosaveConflict.Message" xml:space="preserve"><value>Save conflict: the draft changed in another process. Review it before continuing.</value></data>
+  <data name="AutosaveError.Message" xml:space="preserve"><value>The draft could not be saved. The invoice was not issued.</value></data>
+  <data name="LineWithoutSku.Text" xml:space="preserve"><value>No SKU</value></data>
+  <data name="LineQuantity.Header" xml:space="preserve"><value>Quantity</value></data>
+  <data name="LineQuantity.AutomationNameFormat" xml:space="preserve"><value>Quantity for {0}</value></data>
+  <data name="LineUnitPrice.Header" xml:space="preserve"><value>Unit price (SAR)</value></data>
+  <data name="LineUnitPrice.AutomationNameFormat" xml:space="preserve"><value>Unit price for {0}</value></data>
+  <data name="LineVatCategory.Header" xml:space="preserve"><value>VAT category</value></data>
+  <data name="LineVatCategory.AutomationNameFormat" xml:space="preserve"><value>VAT category for {0}</value></data>
+  <data name="VatStandard.Content" xml:space="preserve"><value>15%</value></data>
+  <data name="VatZeroRated.Content" xml:space="preserve"><value>Zero-rated</value></data>
+  <data name="VatExempt.Content" xml:space="preserve"><value>Exempt</value></data>
+  <data name="LineExemptionCode.Header" xml:space="preserve"><value>Exemption/zero-rate reason code</value></data>
+  <data name="LineExemptionCode.AutomationNameFormat" xml:space="preserve"><value>Exemption or zero-rate reason code for {0}</value></data>
+  <data name="LineExemptionReason.Header" xml:space="preserve"><value>Exemption/zero-rate reason</value></data>
+  <data name="LineExemptionReason.AutomationNameFormat" xml:space="preserve"><value>Exemption or zero-rate reason for {0}</value></data>
+  <data name="LineSaveAction.Content" xml:space="preserve"><value>Save line</value></data>
+  <data name="LineSaveAction.AutomationNameFormat" xml:space="preserve"><value>Save changes to line {0}</value></data>
+  <data name="LineRemoveAction.Content" xml:space="preserve"><value>Remove</value></data>
+  <data name="LineRemoveAction.AutomationNameFormat" xml:space="preserve"><value>Remove line {0}</value></data>
+  <data name="MoneySar.Format" xml:space="preserve"><value>SAR {0}</value></data>
+  <data name="ValidationLinesRequired.Message" xml:space="preserve"><value>Add at least one line</value></data>
+  <data name="ValidationQuantityInvalid.Message" xml:space="preserve"><value>Quantity must be positive with no more than three decimal places</value></data>
+  <data name="ValidationUnitPriceInvalid.Message" xml:space="preserve"><value>Unit price is invalid</value></data>
+  <data name="ValidationExemptionRequired.Message" xml:space="preserve"><value>Enter the exemption or zero-rate code and reason</value></data>
+  <data name="IssuedPdfNotFound.Message" xml:space="preserve"><value>The issued invoice PDF was not found.</value></data>
+  <data name="UserError.InvoiceNotFound.Message" xml:space="preserve"><value>The selected invoice no longer exists. Refresh the list and try again.</value></data>
+  <data name="UserError.InvoiceAlreadyVoided.Message" xml:space="preserve"><value>This invoice has already been voided.</value></data>
+  <data name="UserError.InvalidInput.Message" xml:space="preserve"><value>Check the entered information and try again.</value></data>
+  <data name="UserError.FileOperation.Message" xml:space="preserve"><value>The PDF file could not be opened or saved. Check file access and try again.</value></data>
+  <data name="UserError.DataOperation.Message" xml:space="preserve"><value>The data operation could not be completed. Close other copies of the app and try again.</value></data>
+  <data name="UserError.Unexpected.Message" xml:space="preserve"><value>The operation could not be completed. Try again. If the problem continues, restart the app.</value></data>
+  <data name="InvoiceSearch.AutomationProperties.Name" xml:space="preserve"><value>Search invoices by number, customer, or UUID</value></data>
+  <data name="InvoiceList.AutomationProperties.Name" xml:space="preserve"><value>Final invoice history</value></data>
+  <data name="InvoicePreviewAction.Content" xml:space="preserve"><value>View PDF</value></data>
+  <data name="InvoicePreviewAction.AutomationProperties.Name" xml:space="preserve"><value>View the final PDF</value></data>
+  <data name="InvoicePrintAction.Content" xml:space="preserve"><value>Print</value></data>
+  <data name="InvoicePrintAction.AutomationProperties.Name" xml:space="preserve"><value>Print the final PDF</value></data>
+  <data name="InvoiceExportAction.Content" xml:space="preserve"><value>Export PDF</value></data>
+  <data name="InvoiceExportAction.AutomationProperties.Name" xml:space="preserve"><value>Export the final PDF</value></data>
+  <data name="InvoiceDuplicateAction.Content" xml:space="preserve"><value>Copy as draft</value></data>
+  <data name="InvoiceDuplicateAction.AutomationProperties.Name" xml:space="preserve"><value>Copy the invoice as a new draft</value></data>
+  <data name="InvoiceCreditNoteAction.Content" xml:space="preserve"><value>Create credit note</value></data>
+  <data name="InvoiceCreditNoteAction.AutomationProperties.Name" xml:space="preserve"><value>Create a linked credit note draft</value></data>
+  <data name="InvoiceVoidAction.Content" xml:space="preserve"><value>Void</value></data>
+  <data name="InvoiceVoidAction.AutomationProperties.Name" xml:space="preserve"><value>Void the invoice for the first time</value></data>
+  <data name="DatabaseOpenFailure.Message" xml:space="preserve"><value>The database could not be opened.</value></data>
+  <data name="InvoicePreviewSuccess.Message" xml:space="preserve"><value>The final PDF was displayed.</value></data>
+  <data name="InvoicePreviewDialog.TitleFormat" xml:space="preserve"><value>Invoice {0}</value></data>
+  <data name="InvoicePreviewDialog.AutomationNameFormat" xml:space="preserve"><value>Final PDF preview for invoice {0}</value></data>
+  <data name="CreditNotePreviewDialog.TitleFormat" xml:space="preserve"><value>Credit note {0}</value></data>
+  <data name="CreditNotePreviewDialog.AutomationNameFormat" xml:space="preserve"><value>Final PDF preview for credit note {0}</value></data>
+  <data name="DocumentType.TaxInvoice" xml:space="preserve"><value>Tax invoice</value></data>
+  <data name="DocumentType.CreditNote" xml:space="preserve"><value>Credit note</value></data>
+  <data name="DocumentRow.AutomationNameFormat" xml:space="preserve"><value>{0} {1}, customer {2}, date {3}, total {4}</value></data>
+  <data name="InvoicePrintSuccess.Message" xml:space="preserve"><value>The final PDF was sent to the printer.</value></data>
+  <data name="InvoiceExportCancelled.Message" xml:space="preserve"><value>Export was cancelled.</value></data>
+  <data name="InvoiceExportSuccess.Message" xml:space="preserve"><value>The final PDF was exported.</value></data>
+  <data name="InvoiceDuplicateSuccess.Format" xml:space="preserve"><value>New draft created: {0:D}</value></data>
+  <data name="VoidReason.Header" xml:space="preserve"><value>Void reason</value></data>
+  <data name="VoidReason.AutomationProperties.Name" xml:space="preserve"><value>Invoice void reason</value></data>
+  <data name="VoidOperator.Header" xml:space="preserve"><value>Operator name</value></data>
+  <data name="VoidOperator.AutomationProperties.Name" xml:space="preserve"><value>Void operator name</value></data>
+  <data name="VoidConfirmation.Title" xml:space="preserve"><value>Confirm invoice void</value></data>
+  <data name="VoidConfirmation.PrimaryButtonText" xml:space="preserve"><value>Void permanently</value></data>
+  <data name="InvoiceVoidSuccess.Message" xml:space="preserve"><value>The void was recorded. The invoice cannot be voided again.</value></data>
+  <data name="DefaultPdfViewerFailure.Message" xml:space="preserve"><value>The default PDF viewer could not be opened.</value></data>
+  <data name="PdfFileType.DisplayName" xml:space="preserve"><value>PDF file</value></data>
+  <data name="CompanyName.AutomationProperties.Name" xml:space="preserve"><value>Company Arabic name</value></data>
+  <data name="CompanyEnglishName.AutomationProperties.Name" xml:space="preserve"><value>Company English name</value></data>
+  <data name="CommercialRegistration.AutomationProperties.Name" xml:space="preserve"><value>Company commercial registration</value></data>
+  <data name="Branch.AutomationProperties.Name" xml:space="preserve"><value>Issuing branch</value></data>
+  <data name="CompanyAddress.AutomationProperties.Name" xml:space="preserve"><value>Company invoice address</value></data>
+  <data name="VatNumber.AutomationProperties.Name" xml:space="preserve"><value>Company VAT number</value></data>
+  <data name="OperatorName.AutomationProperties.Name" xml:space="preserve"><value>Invoice operator name</value></data>
+  <data name="LanguagePicker.AutomationProperties.Name" xml:space="preserve"><value>Application language</value></data>
+  <data name="ThemePicker.AutomationProperties.Name" xml:space="preserve"><value>Application theme</value></data>
+  <data name="SaveSettingsAction.AutomationProperties.Name" xml:space="preserve"><value>Save company, language, and theme settings</value></data>
+  <data name="CreateBackupAction.AutomationProperties.Name" xml:space="preserve"><value>Create a secure backup</value></data>
+  <data name="RestoreBackupAction.AutomationProperties.Name" xml:space="preserve"><value>Restore a backup after confirmation</value></data>
+  <data name="MaintenanceProgress.AutomationProperties.Name" xml:space="preserve"><value>Database maintenance is in progress</value></data>
+  <data name="DatabaseAccessFailure.Message" xml:space="preserve"><value>The database could not be accessed.</value></data>
+  <data name="BackupFileType.DisplayName" xml:space="preserve"><value>MHC backup</value></data>
+  <data name="BackupCreated.Format" xml:space="preserve"><value>Backup created: {0}</value></data>
+  <data name="RestoreConfirmation.Title" xml:space="preserve"><value>Confirm restore</value></data>
+  <data name="RestoreConfirmation.Message" xml:space="preserve"><value>Current data will be replaced with the selected backup. Close any work in progress before continuing. Recovery artifacts will be retained if safe rollback is not possible.</value></data>
+  <data name="RestoreConfirmation.PrimaryButtonText" xml:space="preserve"><value>Restore data</value></data>
+  <data name="RestoreSuccess.Message" xml:space="preserve"><value>Restore completed. The database was reopened and validated.</value></data>
+  <data name="RestoreNoArtifacts.Message" xml:space="preserve"><value>No recovery artifact paths were reported.</value></data>
+  <data name="RestoreFailure.Format" xml:space="preserve"><value>Restore failed. Retained recovery artifacts:{0}{1}</value></data>
+  <data name="CompanyProfileLoadFailure.Message" xml:space="preserve"><value>The company profile could not be loaded.</value></data>
+  <data name="CompanyProfileConflict.Message" xml:space="preserve"><value>The company profile changed elsewhere. Reopen Settings and try again.</value></data>
+  <data name="CompanyProfileValidation.Message" xml:space="preserve"><value>Enter the required company name, 15-digit VAT number, branch, address, and operator.</value></data>
+  <data name="SettingsSaved.Message" xml:space="preserve"><value>Company and application settings were saved.</value></data>
+  <data name="SettingsSaveFailure.Message" xml:space="preserve"><value>The settings could not be saved safely.</value></data>
+</root>

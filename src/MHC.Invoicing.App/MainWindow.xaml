@@ -3,32 +3,111 @@
     x:Class="MHC.Invoicing.App.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:localization="using:MHC.Invoicing.App.Localization"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MHC Invoices"
     mc:Ignorable="d">
   <Grid
-      Padding="32"
-      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      x:Name="WindowRoot"
+      AutomationProperties.AutomationId="WindowRoot"
+      Background="{ThemeResource MhcPageBrush}"
       FlowDirection="RightToLeft">
-    <StackPanel
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        Spacing="12">
-      <TextBlock
-          HorizontalAlignment="Center"
-          FontSize="32"
-          FontWeight="SemiBold"
-          Text="فواتير MHC" />
-      <TextBlock
-          HorizontalAlignment="Center"
-          Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-          Text="جاري تجهيز مساحة العمل…" />
-      <ProgressRing
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Grid
+        x:Name="AppTitleBar"
+        Height="48"
+        Padding="16,0"
+        Background="{ThemeResource MhcCardBrush}"
+        FlowDirection="LeftToRight">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Border
           Width="28"
           Height="28"
-          HorizontalAlignment="Center"
-          IsActive="True" />
-    </StackPanel>
+          VerticalAlignment="Center"
+          Background="{ThemeResource MhcAccentBrush}"
+          CornerRadius="6">
+        <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Foreground="{ThemeResource MhcAccentForegroundBrush}"
+            FontSize="12"
+            FontWeight="Bold"
+            Text="M" />
+      </Border>
+      <StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center" Spacing="0">
+        <TextBlock localization:Localization.TextKey="AppTitle.Text" FontSize="14" FontWeight="SemiBold" />
+        <TextBlock localization:Localization.TextKey="AppSubtitle.Text" FontSize="11" Foreground="{ThemeResource MhcMutedBrush}" />
+      </StackPanel>
+    </Grid>
+
+    <NavigationView
+        x:Name="PrimaryNavigation"
+        AutomationProperties.AutomationId="PrimaryNavigation"
+        Grid.Row="1"
+        AlwaysShowHeader="False"
+        IsBackButtonVisible="Collapsed"
+        IsSettingsVisible="False"
+        IsTabStop="True"
+        OpenPaneLength="248"
+        PaneDisplayMode="LeftCompact"
+        SelectionChanged="PrimaryNavigation_SelectionChanged">
+      <NavigationView.MenuItems>
+        <NavigationViewItem x:Name="DashboardItem" localization:Localization.ContentKey="DashboardNav.Content" Tag="dashboard">
+          <NavigationViewItem.Icon><FontIcon Glyph="&#xE80F;" /></NavigationViewItem.Icon>
+        </NavigationViewItem>
+        <NavigationViewItem x:Name="InvoiceEditorItem" localization:Localization.ContentKey="NewInvoiceNav.Content" Tag="new-invoice">
+          <NavigationViewItem.Icon><FontIcon Glyph="&#xE710;" /></NavigationViewItem.Icon>
+        </NavigationViewItem>
+        <NavigationViewItem x:Name="InvoicesItem" localization:Localization.ContentKey="InvoicesNav.Content" Tag="invoices">
+          <NavigationViewItem.Icon><FontIcon Glyph="&#xE8A5;" /></NavigationViewItem.Icon>
+        </NavigationViewItem>
+        <NavigationViewItem localization:Localization.ContentKey="CustomersNav.Content" Tag="customers" AutomationProperties.AutomationId="CustomersItem">
+          <NavigationViewItem.Icon><FontIcon Glyph="&#xE716;" /></NavigationViewItem.Icon>
+        </NavigationViewItem>
+        <NavigationViewItem localization:Localization.ContentKey="ItemsNav.Content" Tag="items" AutomationProperties.AutomationId="ItemsItem">
+          <NavigationViewItem.Icon><FontIcon Glyph="&#xE719;" /></NavigationViewItem.Icon>
+        </NavigationViewItem>
+      </NavigationView.MenuItems>
+      <NavigationView.FooterMenuItems>
+        <NavigationViewItem x:Name="SettingsItem" localization:Localization.ContentKey="SettingsNav.Content" Tag="settings">
+          <NavigationViewItem.Icon><FontIcon Glyph="&#xE713;" /></NavigationViewItem.Icon>
+        </NavigationViewItem>
+      </NavigationView.FooterMenuItems>
+      <Frame x:Name="ContentFrame" />
+    </NavigationView>
+
+    <WebView2
+        x:Name="DocumentRendererWebView"
+        Grid.Row="1"
+        Width="1"
+        Height="1"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        IsHitTestVisible="False"
+        IsTabStop="False"
+        Opacity="0" />
+
+    <Border
+        Grid.Row="2"
+        Height="32"
+        Padding="16,0"
+        Background="{ThemeResource MhcCardBrush}"
+        BorderBrush="{ThemeResource MhcCardBorderBrush}"
+        BorderThickness="0,1,0,0">
+      <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
+        <Ellipse Width="7" Height="7" Fill="{ThemeResource MhcSuccessBrush}" />
+        <TextBlock localization:Localization.TextKey="StatusReady.Text" FontSize="12" Foreground="{ThemeResource MhcMutedBrush}" />
+      </StackPanel>
+    </Border>
   </Grid>
 </Window>

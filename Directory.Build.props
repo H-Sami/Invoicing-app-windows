@@ -12,4 +12,7 @@
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <DebugType>embedded</DebugType>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(LocalQaArtifact)' == 'true'">
+    <DefineConstants>$(DefineConstants);LOCAL_QA</DefineConstants>
+  </PropertyGroup>
 </Project>

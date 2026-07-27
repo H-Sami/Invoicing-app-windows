@@ -8,6 +8,9 @@ trim_trailing_whitespace = true
 indent_style = space
 indent_size = 4
 
+[**/Migrations/*.cs]
+generated_code = true
+
 [*.{cs,csx}]
 dotnet_sort_system_directives_first = true
 csharp_new_line_before_open_brace = all

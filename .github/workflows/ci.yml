@@ -23,6 +23,11 @@ jobs:
           cache: true
           cache-dependency-path: "**/packages.lock.json"
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
       - name: Restore locked dependencies
         run: dotnet restore MHC.Invoicing.sln --locked-mode
 
@@ -34,6 +39,9 @@ jobs:
 
       - name: Test
         run: dotnet test MHC.Invoicing.sln -c Release -p:Platform=x64 --no-build --collect:"XPlat Code Coverage" --results-directory TestResults --logger trx
+
+      - name: Test release packaging rules
+        run: python tests/packaging/test_release_packaging.py
 
       - name: Upload test results
         if: always()

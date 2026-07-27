@@ -62,6 +62,36 @@ public sealed class Customer
         return customer;
     }
 
+    internal static Customer Rehydrate(
+        Guid id,
+        string nameArabic,
+        string? nameEnglish,
+        string? vatNumber,
+        string? commercialRegistration,
+        string? address,
+        string? phone,
+        string? email,
+        DateTimeOffset createdAtUtc,
+        DateTimeOffset updatedAtUtc,
+        bool isArchived)
+    {
+        if (id == Guid.Empty)
+        {
+            throw new ArgumentException("Customer ID cannot be empty.", nameof(id));
+        }
+
+        ValidateUtc(createdAtUtc, nameof(createdAtUtc));
+        ArgumentOutOfRangeException.ThrowIfLessThan(updatedAtUtc, createdAtUtc);
+
+        Customer customer = new(id)
+        {
+            CreatedAtUtc = createdAtUtc,
+        };
+        customer.Update(nameArabic, nameEnglish, vatNumber, commercialRegistration, address, phone, email, updatedAtUtc);
+        customer.IsArchived = isArchived;
+        return customer;
+    }
+
     public void Update(
         string nameArabic,
         string? nameEnglish,

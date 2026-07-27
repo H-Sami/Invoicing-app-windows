@@ -38,9 +38,8 @@ packages/
 *.sqlite3-journal
 *.mhcbak
 *.pdf
-Backups/
-Documents/
-WebView2/
+# Runtime backup/document/WebView2 directories live outside the repository under %LOCALAPPDATA%.
+# Do not use broad directory-name rules here because source code also uses Documents/.
 
 # Credentials, signing, and local configuration
 .env

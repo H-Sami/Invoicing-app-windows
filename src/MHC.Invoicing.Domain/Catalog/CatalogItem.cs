@@ -63,6 +63,35 @@ public sealed class CatalogItem
         return item;
     }
 
+    internal static CatalogItem Rehydrate(
+        Guid id,
+        string nameArabic,
+        string? nameEnglish,
+        string? sku,
+        UnitOfMeasure unit,
+        Money defaultUnitPrice,
+        VatCategory vatCategory,
+        DateTimeOffset createdAtUtc,
+        DateTimeOffset updatedAtUtc,
+        bool isArchived)
+    {
+        if (id == Guid.Empty)
+        {
+            throw new ArgumentException("Catalog item ID cannot be empty.", nameof(id));
+        }
+
+        ValidateUtc(createdAtUtc, nameof(createdAtUtc));
+        ArgumentOutOfRangeException.ThrowIfLessThan(updatedAtUtc, createdAtUtc);
+
+        CatalogItem item = new(id)
+        {
+            CreatedAtUtc = createdAtUtc,
+        };
+        item.Update(nameArabic, nameEnglish, sku, unit, defaultUnitPrice, vatCategory, updatedAtUtc);
+        item.IsArchived = isArchived;
+        return item;
+    }
+
     public void Update(
         string nameArabic,
         string? nameEnglish,
