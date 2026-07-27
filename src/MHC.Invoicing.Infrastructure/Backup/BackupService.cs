@@ -44,13 +44,13 @@ public sealed class BackupService
         new Dictionary<int, SupportedSchema>
         {
             [1] = new(
-                "eb9f5ecb8f4378fd351aa0f08433ed279fec570ae31450c4d09d8b43cda6d680",
+                "9062eb1aa0763237a6e62b6afe4b6dcb55115b60040e20f1ebb3691cfe7aec11",
                 ["20260722235510_InitialCreate"]),
             [2] = new(
-                "480c703346c578cbe1d0a466ef440e1c2048ddb43efaab78d9d10eabb131b31f",
+                "25951b2fe59126dce5c1cc1b0352afcfe5f0bd235897574ccbcd783b48fcd076",
                 ["20260722235510_InitialCreate", "20260724003000_RejectVoidedOriginalCreditFinalization"]),
             [3] = new(
-                "2b348d722f9937182edab179cc9ae951bd9794a631bfc2d3523895275a6e89cb",
+                "1d94bcf8507a4025de5ed0d20a641c07d58079aff0505d1812459f45fdbee3e5",
                 ["20260722235510_InitialCreate", "20260724003000_RejectVoidedOriginalCreditFinalization",
                  "20260724010000_StrengthenIssuanceLedgerValidation"]),
         };
@@ -878,7 +878,14 @@ public sealed class BackupService
         {
             for (int index = 0; index < 4; index++)
             {
-                hash.AppendData(Encoding.UTF8.GetBytes(reader.GetString(index)));
+                string value = reader.GetString(index);
+                if (index == 3)
+                {
+                    // EF migration raw strings inherit checkout line endings. SQLite treats CRLF and LF as
+                    // equivalent SQL whitespace, so canonicalize only line endings before schema admission.
+                    value = value.Replace("\r\n", "\n", StringComparison.Ordinal).Replace('\r', '\n');
+                }
+                hash.AppendData(Encoding.UTF8.GetBytes(value));
                 hash.AppendData([0]);
             }
         }
