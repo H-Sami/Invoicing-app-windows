@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- Keep Arabic UI localization/RTL on the window while allowing Latin-script input in every editor. -->
+  <Style TargetType="TextBox" BasedOn="{StaticResource DefaultTextBoxStyle}">
+    <Setter Property="Language" Value="en-US" />
+  </Style>
+  <Style TargetType="AutoSuggestBox" BasedOn="{StaticResource DefaultAutoSuggestBoxStyle}">
+    <Setter Property="Language" Value="en-US" />
+  </Style>
+  <Style TargetType="NumberBox" BasedOn="{StaticResource DefaultNumberBoxStyle}">
+    <Setter Property="Language" Value="en-US" />
+  </Style>
   <Style x:Key="MhcCardStyle" TargetType="Border">
     <Setter Property="Background" Value="{ThemeResource MhcCardBrush}" />
     <Setter Property="BorderBrush" Value="{ThemeResource MhcCardBorderBrush}" />

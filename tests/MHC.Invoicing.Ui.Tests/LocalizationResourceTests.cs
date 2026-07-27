@@ -37,6 +37,35 @@ public sealed class LocalizationResourceTests
         Assert.Equal("en-US", LocalizationState.Language);
     }
 
+    [Theory]
+    [InlineData("TextBox", "DefaultTextBoxStyle")]
+    [InlineData("AutoSuggestBox", "DefaultAutoSuggestBoxStyle")]
+    [InlineData("NumberBox", "DefaultNumberBoxStyle")]
+    public void EditableControlsAcceptEnglishInputWithoutChangingApplicationLanguage(
+        string targetType,
+        string defaultStyleKey)
+    {
+        string path = Path.Combine(
+            FindRepositoryRoot(),
+            "src",
+            "MHC.Invoicing.App",
+            "Styles",
+            "Controls.xaml");
+        XDocument controls = XDocument.Load(path);
+        XNamespace presentation = "http://schemas.microsoft.com/winfx/2006/xaml/presentation";
+        XElement style = Assert.Single(
+            controls.Root!.Elements(presentation + "Style"),
+            element => (string?)element.Attribute("TargetType") == targetType);
+
+        Assert.Equal(
+            $"{{StaticResource {defaultStyleKey}}}",
+            (string?)style.Attribute("BasedOn"));
+        XElement language = Assert.Single(
+            style.Elements(presentation + "Setter"),
+            element => (string?)element.Attribute("Property") == "Language");
+        Assert.Equal("en-US", (string?)language.Attribute("Value"));
+    }
+
     [Fact]
     public void ArabicAndEnglishResourcesHaveIdenticalKeys()
     {
