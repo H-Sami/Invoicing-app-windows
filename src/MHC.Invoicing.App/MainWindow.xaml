@@ -30,20 +30,13 @@
         <ColumnDefinition Width="Auto" />
         <ColumnDefinition />
       </Grid.ColumnDefinitions>
-      <Border
+      <Image
           Width="28"
           Height="28"
           VerticalAlignment="Center"
-          Background="{ThemeResource MhcAccentBrush}"
-          CornerRadius="6">
-        <TextBlock
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Foreground="{ThemeResource MhcAccentForegroundBrush}"
-            FontSize="12"
-            FontWeight="Bold"
-            Text="M" />
-      </Border>
+          AutomationProperties.Name="MHC Invoices"
+          Source="ms-appx:///Assets/AppLogo.png"
+          Stretch="Uniform" />
       <StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center" Spacing="0">
         <TextBlock localization:Localization.TextKey="AppTitle.Text" FontSize="14" FontWeight="SemiBold" />
         <TextBlock localization:Localization.TextKey="AppSubtitle.Text" FontSize="11" Foreground="{ThemeResource MhcMutedBrush}" />

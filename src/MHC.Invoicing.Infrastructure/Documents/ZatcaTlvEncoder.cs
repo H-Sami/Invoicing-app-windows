@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Text;
+using MHC.Invoicing.Domain.Validation;
 using MHC.Invoicing.Domain.ValueObjects;
 
 namespace MHC.Invoicing.Infrastructure.Documents;
@@ -21,9 +22,13 @@ public static class ZatcaTlvEncoder
             throw new ArgumentException("Seller name is required.", nameof(data));
         }
 
-        if (data.SellerVatNumber.Length != 15 || !data.SellerVatNumber.All(char.IsAsciiDigit))
+        if (string.IsNullOrWhiteSpace(data.SellerVatNumber) ||
+            data.SellerVatNumber.Length > DomainFieldLimits.TaxIdentifier ||
+            !data.SellerVatNumber.All(char.IsAsciiDigit))
         {
-            throw new ArgumentException("Seller VAT number must contain exactly 15 digits.", nameof(data));
+            throw new ArgumentException(
+                $"Seller VAT number must contain at most {DomainFieldLimits.TaxIdentifier} digits.",
+                nameof(data));
         }
 
         if (data.IssuedAtSaudi.Offset != TimeSpan.FromHours(3))

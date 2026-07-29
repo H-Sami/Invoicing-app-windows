@@ -202,8 +202,10 @@ public sealed partial class CustomersPage : Page
     {
         TextBox nameArabic = Field(Text("الاسم العربي (مطلوب)", "Arabic name (required)"), row?.NameArabic);
         TextBox nameEnglish = Field(Text("الاسم الإنجليزي", "English name"), row?.NameEnglish);
-        TextBox vat = Field(Text("الرقم الضريبي (15 رقماً)", "VAT number (15 digits)"), row?.VatNumber);
-        TextBox registration = Field(Text("السجل التجاري", "Commercial registration"), row?.CommercialRegistration);
+        TextBox vat = Field(Text("الرقم الضريبي (أرقام فقط)", "VAT number (numbers only)"), row?.VatNumber);
+        vat.MaxLength = 50;
+        TextBox registration = Field(Text("السجل التجاري (أرقام فقط)", "Commercial registration (numbers only)"), row?.CommercialRegistration);
+        registration.MaxLength = 50;
         TextBox address = Field(Text("العنوان", "Address"), row?.Address);
         TextBox phone = Field(Text("الهاتف", "Phone"), row?.Phone);
         TextBox email = Field(Text("البريد الإلكتروني", "Email"), row?.Email);

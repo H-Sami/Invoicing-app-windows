@@ -3,6 +3,8 @@ using MHC.Invoicing.App.Localization;
 using MHC.Invoicing.App.Workflows;
 using MHC.Invoicing.Application.Maintenance;
 using MHC.Invoicing.Application.Workflows;
+using MHC.Invoicing.Domain.Invoices;
+using MHC.Invoicing.Infrastructure.Persistence;
 using MHC.Invoicing.Infrastructure.Repositories;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -17,6 +19,47 @@ public sealed partial class DashboardPage : Page
     }
 
     private static string L(string key) => LocalizationState.GetString(key);
+
+    private async void DashboardPage_Loaded(object sender, RoutedEventArgs e)
+    {
+        DashboardLoadError.Visibility = Visibility.Collapsed;
+        try
+        {
+            App app = (App)Microsoft.UI.Xaml.Application.Current;
+            AppComposition services = app.Services
+                ?? throw new InvalidOperationException(L("ApplicationServicesUnavailable.Message"));
+            DashboardSnapshot dashboard;
+            await using (IAsyncDisposable work = await ApplicationMaintenanceGate.Shared.EnterWorkAsync())
+            await using (MhcDbContext context = ScopedPersistence.CreateContext(services.ConnectionString))
+            {
+                DateTimeOffset saudiNow = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(3));
+                DateOnly monthStart = new(saudiNow.Year, saudiNow.Month, 1);
+                dashboard = await new InvoiceRepository(context).GetDashboardAsync(monthStart, 5);
+            }
+
+            CultureInfo culture = DisplayCulture.Gregorian(LocalizationState.Language);
+            InvoiceCountValue.Text = dashboard.InvoiceCount.ToString(culture);
+            SalesValue.Text = string.Concat(
+                dashboard.TotalSales.Riyals.ToString("N2", culture),
+                " ",
+                MHC.Invoicing.Domain.ValueObjects.Money.Currency);
+            RecentInvoicesList.ItemsSource = dashboard.RecentInvoices
+                .Select(invoice => new RecentInvoiceChoice(invoice, culture))
+                .ToArray();
+            bool hasRecent = dashboard.RecentInvoices.Count > 0;
+            EmptyRecentPanel.Visibility = hasRecent ? Visibility.Collapsed : Visibility.Visible;
+            RecentInvoicesList.Visibility = hasRecent ? Visibility.Visible : Visibility.Collapsed;
+        }
+        catch (Exception exception)
+        {
+            System.Diagnostics.Debug.WriteLine($"Dashboard load failed: {exception}");
+            InvoiceCountValue.Text = "—";
+            SalesValue.Text = "—";
+            RecentInvoicesList.Visibility = Visibility.Collapsed;
+            EmptyRecentPanel.Visibility = Visibility.Collapsed;
+            DashboardLoadError.Visibility = Visibility.Visible;
+        }
+    }
 
     private void NewInvoice_Click(object sender, RoutedEventArgs e) =>
         ((App)Microsoft.UI.Xaml.Application.Current).MainWindow?.OpenInvoiceEditor();
@@ -88,6 +131,34 @@ public sealed partial class DashboardPage : Page
                 Draft.LineCount.ToString(culture),
                 " ",
                 L("ResumeDraftDialog.LinesSuffix"));
+        }
+    }
+
+    private sealed record RecentInvoiceChoice(
+        MHC.Invoicing.Application.Persistence.InvoiceSummary Invoice,
+        CultureInfo Culture)
+    {
+        public override string ToString()
+        {
+            decimal signedAmount = Invoice.DocumentType == InvoiceDocumentType.CreditNote
+                ? -Invoice.GrandTotal.Riyals
+                : Invoice.GrandTotal.Riyals;
+            string voidStatus = Invoice.IsVoided
+                ? string.Concat(" • ", L("InvoiceStatus.Voided"))
+                : string.Empty;
+            return string.Concat(
+                Invoice.PublicNumber,
+                " • ",
+                L($"DocumentType.{Invoice.DocumentType}"),
+                voidStatus,
+                " • ",
+                Invoice.CustomerNameArabic,
+                " • ",
+                Invoice.BusinessDate.ToString("d", Culture),
+                " • ",
+                signedAmount.ToString("N2", Culture),
+                " ",
+                MHC.Invoicing.Domain.ValueObjects.Money.Currency);
         }
     }
 }

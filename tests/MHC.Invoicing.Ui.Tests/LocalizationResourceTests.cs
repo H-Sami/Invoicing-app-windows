@@ -189,6 +189,42 @@ public sealed class LocalizationResourceTests
             "x:Name=\"(?:Subtotal|Vat|GrandTotal)Text\" Grid.Column=\"1\""));
     }
 
+    [Fact]
+    public void DashboardFailureStateAndIdentifierEditorLimitsAreExplicit()
+    {
+        string pages = Path.Combine(FindRepositoryRoot(), "src", "MHC.Invoicing.App", "Pages");
+        XNamespace x = "http://schemas.microsoft.com/winfx/2006/xaml";
+        XDocument dashboard = XDocument.Load(Path.Combine(pages, "DashboardPage.xaml"));
+        XElement error = Assert.Single(
+            dashboard.Descendants(),
+            element => (string?)element.Attribute(x + "Name") == "DashboardLoadError");
+        Assert.Equal("Dashboard.LoadError", (string?)error.Attribute("AutomationProperties.AutomationId"));
+        Assert.Equal("Assertive", (string?)error.Attribute("AutomationProperties.LiveSetting"));
+        Assert.Equal("Collapsed", (string?)error.Attribute("Visibility"));
+
+        string dashboardCode = File.ReadAllText(Path.Combine(pages, "DashboardPage.xaml.cs"));
+        Assert.Contains("InvoiceCountValue.Text = \"—\";", dashboardCode, StringComparison.Ordinal);
+        Assert.Contains("DashboardLoadError.Visibility = Visibility.Visible;", dashboardCode, StringComparison.Ordinal);
+        Assert.Contains("Invoice.DocumentType == InvoiceDocumentType.CreditNote", dashboardCode, StringComparison.Ordinal);
+        Assert.Contains("Invoice.IsVoided", dashboardCode, StringComparison.Ordinal);
+        Assert.Contains("InvoiceStatus.Voided", dashboardCode, StringComparison.Ordinal);
+
+        foreach ((string fileName, string controlName) in new[]
+                 {
+                     ("SettingsPage.xaml", "CompanyVatNumber"),
+                     ("SettingsPage.xaml", "CompanyCommercialRegistration"),
+                     ("InvoiceEditorPage.xaml", "CustomerVatNumber"),
+                     ("InvoiceEditorPage.xaml", "CustomerCommercialRegistration"),
+                 })
+        {
+            XDocument document = XDocument.Load(Path.Combine(pages, fileName));
+            XElement editor = Assert.Single(
+                document.Descendants(),
+                element => (string?)element.Attribute(x + "Name") == controlName);
+            Assert.Equal("50", (string?)editor.Attribute("MaxLength"));
+        }
+    }
+
     private static HashSet<string> LoadKeys(string path) =>
         LoadResources(path).Keys.ToHashSet(StringComparer.Ordinal);
 

@@ -10,8 +10,59 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MHC.Invoicing.Infrastructure.Repositories;
 
+public sealed record DashboardSnapshot(
+    IReadOnlyList<InvoiceSummary> RecentInvoices,
+    int InvoiceCount,
+    Money TotalSales);
+
 public sealed class InvoiceRepository(MhcDbContext context) : IInvoiceRepository
 {
+    public async Task<DashboardSnapshot> GetDashboardAsync(
+        DateOnly monthStart,
+        int recentLimit,
+        CancellationToken cancellationToken = default)
+    {
+        if (monthStart.Day != 1)
+        {
+            throw new ArgumentException("The dashboard month must start on day one.", nameof(monthStart));
+        }
+
+        ArgumentOutOfRangeException.ThrowIfLessThan(recentLimit, 1);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(recentLimit, 20);
+        string fromDate = monthStart.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+        string toDate = monthStart.AddMonths(1).ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+        IQueryable<Guid> finalizedIds = FinalizedInvoiceIds();
+        IQueryable<InvoiceEntity> finalized = context.Invoices
+            .AsNoTracking()
+            .Where(invoice => finalizedIds.Contains(invoice.Id));
+
+        List<InvoiceEntity> recentEntities = await finalized
+            .Include(invoice => invoice.Void)
+            .OrderByDescending(invoice => invoice.IssuedAtUtcMs)
+            .ThenBy(invoice => invoice.Id)
+            .Take(recentLimit)
+            .ToListAsync(cancellationToken);
+#pragma warning disable CA1309 // EF Core translates only the two-argument overload to SQL.
+        IQueryable<InvoiceEntity> monthly = finalized.Where(invoice =>
+            string.Compare(invoice.BusinessDate, fromDate) >= 0 &&
+            string.Compare(invoice.BusinessDate, toDate) < 0 &&
+            invoice.Void == null);
+#pragma warning restore CA1309
+        int invoiceCount = await monthly.CountAsync(
+            invoice => invoice.DocumentType == InvoiceDocumentType.TaxInvoice,
+            cancellationToken);
+        long salesHalalah = await monthly.SumAsync(
+            invoice => invoice.DocumentType == InvoiceDocumentType.CreditNote
+                ? -invoice.GrandTotalHalalah
+                : invoice.GrandTotalHalalah,
+            cancellationToken);
+
+        return new DashboardSnapshot(
+            recentEntities.ConvertAll(ToSummary).AsReadOnly(),
+            invoiceCount,
+            new Money(salesHalalah));
+    }
+
     public async Task<InvoiceSummary?> GetSummaryAsync(
         Guid id,
         CancellationToken cancellationToken = default)

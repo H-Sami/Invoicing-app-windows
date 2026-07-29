@@ -18,7 +18,7 @@ internal sealed class CompanyProfileConfiguration : IEntityTypeConfiguration<Com
         builder.HasKey(entity => entity.Id);
         builder.Property(entity => entity.NameArabic).HasMaxLength(DomainFieldLimits.PartyName).IsRequired();
         builder.Property(entity => entity.NameEnglish).HasMaxLength(DomainFieldLimits.PartyName);
-        builder.Property(entity => entity.VatNumber).HasMaxLength(15).IsRequired();
+        builder.Property(entity => entity.VatNumber).HasMaxLength(DomainFieldLimits.TaxIdentifier).IsRequired();
         builder.Property(entity => entity.CommercialRegistration).HasMaxLength(DomainFieldLimits.CommercialRegistration);
         builder.Property(entity => entity.Branch).HasMaxLength(DomainFieldLimits.PartyName).IsRequired();
         builder.Property(entity => entity.Address).HasMaxLength(DomainFieldLimits.Address).IsRequired();
@@ -44,7 +44,7 @@ internal sealed class CustomerConfiguration : IEntityTypeConfiguration<CustomerE
         builder.Property(entity => entity.NameEnglish).HasMaxLength(DomainFieldLimits.PartyName);
         builder.Property(entity => entity.SearchNameArabic).HasMaxLength(DomainFieldLimits.PartyName).IsRequired();
         builder.Property(entity => entity.SearchNameEnglish).HasMaxLength(DomainFieldLimits.PartyName).IsRequired();
-        builder.Property(entity => entity.VatNumber).HasMaxLength(15);
+        builder.Property(entity => entity.VatNumber).HasMaxLength(DomainFieldLimits.TaxIdentifier);
         builder.Property(entity => entity.CommercialRegistration).HasMaxLength(DomainFieldLimits.CommercialRegistration);
         builder.Property(entity => entity.Address).HasMaxLength(DomainFieldLimits.Address);
         builder.Property(entity => entity.Phone).HasMaxLength(DomainFieldLimits.Phone);
@@ -107,7 +107,7 @@ internal sealed class InvoiceDraftConfiguration : IEntityTypeConfiguration<Invoi
         builder.Property(entity => entity.BusinessDate).HasMaxLength(10).IsRequired();
         builder.Property(entity => entity.CustomerNameArabic).HasMaxLength(DomainFieldLimits.PartyName).IsRequired();
         builder.Property(entity => entity.CustomerNameEnglish).HasMaxLength(DomainFieldLimits.PartyName);
-        builder.Property(entity => entity.CustomerVatNumber).HasMaxLength(15);
+        builder.Property(entity => entity.CustomerVatNumber).HasMaxLength(DomainFieldLimits.TaxIdentifier);
         builder.Property(entity => entity.CustomerCommercialRegistration).HasMaxLength(DomainFieldLimits.CommercialRegistration);
         builder.Property(entity => entity.CustomerAddress).HasMaxLength(DomainFieldLimits.Address);
         builder.Property(entity => entity.Title).HasMaxLength(DomainFieldLimits.Title);
@@ -185,7 +185,7 @@ internal sealed class InvoiceConfiguration : IEntityTypeConfiguration<InvoiceEnt
         builder.Property(entity => entity.IssuedAtSaudiLocal).HasMaxLength(40).IsRequired();
         builder.Property(entity => entity.SellerNameArabic).HasMaxLength(DomainFieldLimits.PartyName).IsRequired();
         builder.Property(entity => entity.SellerNameEnglish).HasMaxLength(DomainFieldLimits.PartyName);
-        builder.Property(entity => entity.SellerVatNumber).HasMaxLength(15).IsRequired();
+        builder.Property(entity => entity.SellerVatNumber).HasMaxLength(DomainFieldLimits.TaxIdentifier).IsRequired();
         builder.Property(entity => entity.SellerCommercialRegistration).HasMaxLength(DomainFieldLimits.CommercialRegistration);
         builder.Property(entity => entity.SellerBranch).HasMaxLength(DomainFieldLimits.PartyName).IsRequired();
         builder.Property(entity => entity.SellerAddress).HasMaxLength(DomainFieldLimits.Address).IsRequired();
@@ -194,7 +194,7 @@ internal sealed class InvoiceConfiguration : IEntityTypeConfiguration<InvoiceEnt
         builder.Property(entity => entity.CustomerNameArabic).HasMaxLength(DomainFieldLimits.PartyName).IsRequired();
         builder.Property(entity => entity.CustomerNameEnglish).HasMaxLength(DomainFieldLimits.PartyName);
         builder.Property(entity => entity.CustomerSearchName).HasMaxLength(DomainFieldLimits.PartyName).IsRequired();
-        builder.Property(entity => entity.CustomerVatNumber).HasMaxLength(15);
+        builder.Property(entity => entity.CustomerVatNumber).HasMaxLength(DomainFieldLimits.TaxIdentifier);
         builder.Property(entity => entity.CustomerCommercialRegistration).HasMaxLength(DomainFieldLimits.CommercialRegistration);
         builder.Property(entity => entity.CustomerAddress).HasMaxLength(DomainFieldLimits.Address);
         builder.Property(entity => entity.Title).HasMaxLength(DomainFieldLimits.Title);

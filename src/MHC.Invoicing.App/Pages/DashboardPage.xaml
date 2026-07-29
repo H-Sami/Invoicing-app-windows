@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:localization="using:MHC.Invoicing.App.Localization"
+    Loaded="DashboardPage_Loaded"
     Background="{ThemeResource MhcPageBrush}">
   <ScrollViewer VerticalScrollBarVisibility="Auto">
     <StackPanel Padding="32" Spacing="24" HorizontalAlignment="Stretch">
@@ -15,18 +16,32 @@
         <Border Style="{StaticResource MhcCardStyle}">
           <StackPanel Spacing="16">
             <TextBlock localization:Localization.TextKey="RecentTitle.Text" Style="{StaticResource MhcSectionTitleStyle}" />
-            <StackPanel MinHeight="160" HorizontalAlignment="Stretch" VerticalAlignment="Center" Spacing="8">
+            <TextBlock
+                x:Name="DashboardLoadError"
+                localization:Localization.TextKey="DashboardLoadError.Text"
+                AutomationProperties.AutomationId="Dashboard.LoadError"
+                AutomationProperties.LiveSetting="Assertive"
+                Style="{StaticResource MhcMutedTextStyle}"
+                TextWrapping="Wrap"
+                Visibility="Collapsed" />
+            <StackPanel x:Name="EmptyRecentPanel" MinHeight="160" HorizontalAlignment="Stretch" VerticalAlignment="Center" Spacing="8">
               <FontIcon Glyph="&#xE8A5;" FontSize="28" Foreground="{ThemeResource MhcMutedBrush}" />
               <TextBlock localization:Localization.TextKey="EmptyRecent.Text" HorizontalAlignment="Center" Style="{StaticResource MhcMutedTextStyle}" />
             </StackPanel>
+            <ListView
+                x:Name="RecentInvoicesList"
+                MinHeight="160"
+                AutomationProperties.AutomationId="Dashboard.RecentInvoices"
+                SelectionMode="None"
+                Visibility="Collapsed" />
           </StackPanel>
         </Border>
         <Border Grid.Column="1" Style="{StaticResource MhcCardStyle}">
           <StackPanel Spacing="18">
             <TextBlock localization:Localization.TextKey="PeriodLabel.Text" Style="{StaticResource MhcSectionTitleStyle}" />
             <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
-              <StackPanel Spacing="4"><TextBlock Text="0" FontSize="28" FontWeight="SemiBold"/><TextBlock localization:Localization.TextKey="InvoiceCountLabel.Text" Style="{StaticResource MhcMutedTextStyle}"/></StackPanel>
-              <StackPanel Grid.Column="1" Spacing="4"><TextBlock localization:Localization.TextKey="DashboardZeroSales.Text" FontSize="24" FontWeight="SemiBold" TextWrapping="Wrap"/><TextBlock localization:Localization.TextKey="SalesLabel.Text" Style="{StaticResource MhcMutedTextStyle}"/></StackPanel>
+              <StackPanel Spacing="4"><TextBlock x:Name="InvoiceCountValue" Text="0" AutomationProperties.AutomationId="Dashboard.InvoiceCount" FontSize="28" FontWeight="SemiBold"/><TextBlock localization:Localization.TextKey="InvoiceCountLabel.Text" Style="{StaticResource MhcMutedTextStyle}"/></StackPanel>
+              <StackPanel Grid.Column="1" Spacing="4"><TextBlock x:Name="SalesValue" localization:Localization.TextKey="DashboardZeroSales.Text" AutomationProperties.AutomationId="Dashboard.TotalSales" FontSize="24" FontWeight="SemiBold" TextWrapping="Wrap"/><TextBlock localization:Localization.TextKey="SalesLabel.Text" Style="{StaticResource MhcMutedTextStyle}"/></StackPanel>
             </Grid>
           </StackPanel>
         </Border>

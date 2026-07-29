@@ -253,7 +253,7 @@ public sealed class InvoiceIssuanceService(
         IssuedInvoice invoice = prepared.Invoice;
         ZatcaQrCode qr = qrGenerator.Generate(new ZatcaQrData(
             invoice.Seller.NameArabic,
-            invoice.Seller.VatNumber ?? throw new DomainValidationException("A 15-digit seller VAT number is required for issuance."),
+            invoice.Seller.VatNumber ?? throw new DomainValidationException("A seller VAT number is required for issuance."),
             invoice.Timing.IssuedAtSaudi,
             invoice.Totals.GrandTotal,
             invoice.Totals.Vat));

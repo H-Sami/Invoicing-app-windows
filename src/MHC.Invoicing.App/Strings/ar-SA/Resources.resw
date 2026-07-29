@@ -12,7 +12,7 @@
   <data name="CustomersNav.Content" xml:space="preserve"><value>العملاء</value></data>
   <data name="ItemsNav.Content" xml:space="preserve"><value>الأصناف والخدمات</value></data>
   <data name="SettingsNav.Content" xml:space="preserve"><value>الإعدادات</value></data>
-  <data name="StatusReady.Text" xml:space="preserve"><value>جاهز • البيانات محفوظة محلياً</value></data>
+  <data name="StatusReady.Text" xml:space="preserve"><value>جاهز</value></data>
   <data name="DashboardTitle.Text" xml:space="preserve"><value>مرحباً بك</value></data>
   <data name="DashboardSubtitle.Text" xml:space="preserve"><value>ابدأ فاتورة جديدة أو تابع أحدث أعمالك.</value></data>
   <data name="NewInvoiceAction.Content" xml:space="preserve"><value>إنشاء فاتورة</value></data>
@@ -31,6 +31,7 @@
   <data name="InvoiceCountLabel.Text" xml:space="preserve"><value>الفواتير</value></data>
   <data name="SalesLabel.Text" xml:space="preserve"><value>إجمالي المبيعات</value></data>
   <data name="DashboardZeroSales.Text" xml:space="preserve"><value>0.00 ر.س</value></data>
+  <data name="DashboardLoadError.Text" xml:space="preserve"><value>تعذر تحميل بيانات لوحة التحكم. يرجى المحاولة مرة أخرى.</value></data>
   <data name="EditorTitle.Text" xml:space="preserve"><value>فاتورة ضريبية جديدة</value></data>
   <data name="CreditNoteEditorTitle.Text" xml:space="preserve"><value>إشعار دائن جديد</value></data>
   <data name="CreditNoteEditorSubtitle.Text" xml:space="preserve"><value>تعكس هذه المسودة الفاتورة الضريبية المرتبطة ويُنشأ لها رقم مستقل عند الإصدار.</value></data>
@@ -69,7 +70,7 @@
   <data name="CompanyNameLabel.Text" xml:space="preserve"><value>الاسم العربي</value></data>
   <data name="CompanyName.PlaceholderText" xml:space="preserve"><value>اسم المنشأة</value></data>
   <data name="VatNumberLabel.Text" xml:space="preserve"><value>الرقم الضريبي</value></data>
-  <data name="VatNumber.PlaceholderText" xml:space="preserve"><value>15 رقماً</value></data>
+  <data name="VatNumber.PlaceholderText" xml:space="preserve"><value>أرقام فقط</value></data>
   <data name="OperatorLabel.Text" xml:space="preserve"><value>اسم مُصدر الفاتورة</value></data>
   <data name="OperatorName.PlaceholderText" xml:space="preserve"><value>اسم الموظف</value></data>
   <data name="CompanyEnglishNameLabel.Text" xml:space="preserve"><value>الاسم الإنجليزي</value></data>
@@ -219,6 +220,7 @@
   <data name="CreditNotePreviewDialog.AutomationNameFormat" xml:space="preserve"><value>معاينة ملف PDF النهائي للإشعار الدائن {0}</value></data>
   <data name="DocumentType.TaxInvoice" xml:space="preserve"><value>فاتورة ضريبية</value></data>
   <data name="DocumentType.CreditNote" xml:space="preserve"><value>إشعار دائن</value></data>
+  <data name="InvoiceStatus.Voided" xml:space="preserve"><value>مُبطلة</value></data>
   <data name="DocumentRow.AutomationNameFormat" xml:space="preserve"><value>{0} {1}، العميل {2}، التاريخ {3}، الإجمالي {4}</value></data>
   <data name="InvoicePrintSuccess.Message" xml:space="preserve"><value>تم إرسال ملف PDF النهائي للطباعة.</value></data>
   <data name="InvoiceExportCancelled.Message" xml:space="preserve"><value>تم إلغاء التصدير.</value></data>
@@ -257,7 +259,7 @@
   <data name="RestoreFailure.Format" xml:space="preserve"><value>فشلت الاستعادة. آثار الاسترداد المحتفظ بها:{0}{1}</value></data>
   <data name="CompanyProfileLoadFailure.Message" xml:space="preserve"><value>تعذر تحميل بيانات المنشأة.</value></data>
   <data name="CompanyProfileConflict.Message" xml:space="preserve"><value>تغيرت بيانات المنشأة في عملية أخرى. أعد فتح الإعدادات ثم حاول مجدداً.</value></data>
-  <data name="CompanyProfileValidation.Message" xml:space="preserve"><value>أدخل اسم المنشأة والرقم الضريبي المكوّن من 15 رقماً والفرع والعنوان واسم المُصدر.</value></data>
+  <data name="CompanyProfileValidation.Message" xml:space="preserve"><value>أدخل اسم المنشأة والرقم الضريبي الرقمي والفرع والعنوان واسم المُصدر.</value></data>
   <data name="SettingsSaved.Message" xml:space="preserve"><value>تم حفظ بيانات المنشأة وإعدادات التطبيق.</value></data>
   <data name="SettingsSaveFailure.Message" xml:space="preserve"><value>تعذر حفظ الإعدادات بأمان.</value></data>
 </root>

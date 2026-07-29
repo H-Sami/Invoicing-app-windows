@@ -12,7 +12,7 @@
   <data name="CustomersNav.Content" xml:space="preserve"><value>Customers</value></data>
   <data name="ItemsNav.Content" xml:space="preserve"><value>Items &amp; services</value></data>
   <data name="SettingsNav.Content" xml:space="preserve"><value>Settings</value></data>
-  <data name="StatusReady.Text" xml:space="preserve"><value>Ready • data is stored locally</value></data>
+  <data name="StatusReady.Text" xml:space="preserve"><value>Ready</value></data>
   <data name="DashboardTitle.Text" xml:space="preserve"><value>Welcome</value></data>
   <data name="DashboardSubtitle.Text" xml:space="preserve"><value>Create a new invoice or continue recent work.</value></data>
   <data name="NewInvoiceAction.Content" xml:space="preserve"><value>Create invoice</value></data>
@@ -31,6 +31,7 @@
   <data name="InvoiceCountLabel.Text" xml:space="preserve"><value>Invoices</value></data>
   <data name="SalesLabel.Text" xml:space="preserve"><value>Total sales</value></data>
   <data name="DashboardZeroSales.Text" xml:space="preserve"><value>0.00 SAR</value></data>
+  <data name="DashboardLoadError.Text" xml:space="preserve"><value>Dashboard data could not be loaded. Please try again.</value></data>
   <data name="EditorTitle.Text" xml:space="preserve"><value>New tax invoice</value></data>
   <data name="CreditNoteEditorTitle.Text" xml:space="preserve"><value>New credit note</value></data>
   <data name="CreditNoteEditorSubtitle.Text" xml:space="preserve"><value>This draft reverses the linked tax invoice and receives its own number when issued.</value></data>
@@ -69,7 +70,7 @@
   <data name="CompanyNameLabel.Text" xml:space="preserve"><value>Arabic name</value></data>
   <data name="CompanyName.PlaceholderText" xml:space="preserve"><value>Company name</value></data>
   <data name="VatNumberLabel.Text" xml:space="preserve"><value>VAT number</value></data>
-  <data name="VatNumber.PlaceholderText" xml:space="preserve"><value>15 digits</value></data>
+  <data name="VatNumber.PlaceholderText" xml:space="preserve"><value>Numbers only</value></data>
   <data name="OperatorLabel.Text" xml:space="preserve"><value>Invoice operator</value></data>
   <data name="OperatorName.PlaceholderText" xml:space="preserve"><value>Employee name</value></data>
   <data name="CompanyEnglishNameLabel.Text" xml:space="preserve"><value>English name</value></data>
@@ -219,6 +220,7 @@
   <data name="CreditNotePreviewDialog.AutomationNameFormat" xml:space="preserve"><value>Final PDF preview for credit note {0}</value></data>
   <data name="DocumentType.TaxInvoice" xml:space="preserve"><value>Tax invoice</value></data>
   <data name="DocumentType.CreditNote" xml:space="preserve"><value>Credit note</value></data>
+  <data name="InvoiceStatus.Voided" xml:space="preserve"><value>Voided</value></data>
   <data name="DocumentRow.AutomationNameFormat" xml:space="preserve"><value>{0} {1}, customer {2}, date {3}, total {4}</value></data>
   <data name="InvoicePrintSuccess.Message" xml:space="preserve"><value>The final PDF was sent to the printer.</value></data>
   <data name="InvoiceExportCancelled.Message" xml:space="preserve"><value>Export was cancelled.</value></data>
@@ -257,7 +259,7 @@
   <data name="RestoreFailure.Format" xml:space="preserve"><value>Restore failed. Retained recovery artifacts:{0}{1}</value></data>
   <data name="CompanyProfileLoadFailure.Message" xml:space="preserve"><value>The company profile could not be loaded.</value></data>
   <data name="CompanyProfileConflict.Message" xml:space="preserve"><value>The company profile changed elsewhere. Reopen Settings and try again.</value></data>
-  <data name="CompanyProfileValidation.Message" xml:space="preserve"><value>Enter the required company name, 15-digit VAT number, branch, address, and operator.</value></data>
+  <data name="CompanyProfileValidation.Message" xml:space="preserve"><value>Enter the required company name, numeric VAT number, branch, address, and operator.</value></data>
   <data name="SettingsSaved.Message" xml:space="preserve"><value>Company and application settings were saved.</value></data>
   <data name="SettingsSaveFailure.Message" xml:space="preserve"><value>The settings could not be saved safely.</value></data>
 </root>

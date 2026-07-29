@@ -6,7 +6,8 @@ public static class DomainFieldLimits
     public const int Address = 500;
     public const int Phone = 50;
     public const int Email = 254;
-    public const int CommercialRegistration = 10;
+    public const int TaxIdentifier = 50;
+    public const int CommercialRegistration = 50;
     public const int Sku = 64;
     public const int Unit = 32;
     public const int LineDescription = 500;
@@ -49,13 +50,12 @@ internal static class DomainTextRules
         return normalized;
     }
 
-    public static string? OptionalDigits(string? value, int exactLength, string parameterName)
+    public static string? OptionalDigits(string? value, int maxLength, string parameterName)
     {
-        string? normalized = Optional(value, exactLength, parameterName);
-        if (normalized is not null &&
-            (normalized.Length != exactLength || !normalized.All(char.IsAsciiDigit)))
+        string? normalized = Optional(value, maxLength, parameterName);
+        if (normalized is not null && !normalized.All(char.IsAsciiDigit))
         {
-            throw new ArgumentException($"Value must contain exactly {exactLength} digits.", parameterName);
+            throw new ArgumentException("Value must contain digits only.", parameterName);
         }
 
         return normalized;

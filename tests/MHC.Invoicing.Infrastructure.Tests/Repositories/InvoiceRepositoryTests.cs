@@ -14,6 +14,54 @@ namespace MHC.Invoicing.Infrastructure.Tests.Repositories;
 public sealed class InvoiceRepositoryTests
 {
     [Fact]
+    public async Task GetDashboardAsync_ReturnsRecentFinalizedInvoicesAndCurrentMonthTotals()
+    {
+        CancellationToken cancellationToken = TestContext.Current.CancellationToken;
+        string databasePath = Path.Combine(Path.GetTempPath(), $"hermes-verify-{Guid.NewGuid():N}.db");
+        try
+        {
+            DbContextOptions<MhcDbContext> options = new DbContextOptionsBuilder<MhcDbContext>()
+                .UseSqlite($"Data Source={databasePath}")
+                .Options;
+            await using MhcDbContext context = new(options);
+            await context.Database.MigrateAsync(cancellationToken);
+            InvoiceEntity older = CreateInvoice("MHC-2026-100", "Older", 100, 1_782_086_400_000);
+            older.BusinessDate = "2026-06-30";
+            InvoiceEntity current = CreateInvoice("MHC-2026-101", "Current", 101, 1_784_678_400_000);
+            InvoiceEntity unfinalized = CreateInvoice("MHC-2026-102", "Draft", 102, 1_784_764_802_000);
+            context.Invoices.AddRange(older, current, unfinalized);
+            AddIssuanceAudits(context, older, current, unfinalized);
+            await context.SaveChangesAsync(cancellationToken);
+            foreach (InvoiceEntity finalized in new[] { older, current })
+            {
+                await context.Database.ExecuteSqlInterpolatedAsync(
+                    $"INSERT INTO invoice_finalizations (invoice_id, finalized_at_utc_ms) VALUES ({finalized.Id}, {finalized.IssuedAtUtcMs});",
+                    cancellationToken);
+            }
+
+            InvoiceRepository repository = new(context);
+            DashboardSnapshot dashboard = await repository.GetDashboardAsync(
+                new DateOnly(2026, 7, 1), 5, cancellationToken);
+
+            Assert.Equal([current.Id, older.Id], dashboard.RecentInvoices.Select(invoice => invoice.Id));
+            Assert.Equal(1, dashboard.InvoiceCount);
+            Assert.Equal(new Money(1_150), dashboard.TotalSales);
+        }
+        finally
+        {
+            SqliteConnection.ClearAllPools();
+            foreach (string suffix in new[] { string.Empty, "-wal", "-shm" })
+            {
+                string path = databasePath + suffix;
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+    }
+
+    [Fact]
     public async Task SearchAsync_MatchesOnlyExactUuidOrDocumentSerial()
     {
         CancellationToken cancellationToken = TestContext.Current.CancellationToken;

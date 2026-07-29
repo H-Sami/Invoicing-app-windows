@@ -13,8 +13,8 @@ public sealed class CustomerTests
         Customer customer = Customer.Create(
             "شركة آفاق التقنية",
             "Afaq Technology",
-            "310123456789003",
-            "1010123456",
+            "123",
+            "45",
             "الرياض",
             "+966****0000",
             "billing@example.com",
@@ -23,7 +23,8 @@ public sealed class CustomerTests
         Assert.NotEqual(Guid.Empty, customer.Id);
         Assert.Equal("شركه افاق التقنيه", customer.SearchNameArabic);
         Assert.Equal("afaq technology", customer.SearchNameEnglish);
-        Assert.Equal("310123456789003", customer.VatNumber);
+        Assert.Equal("123", customer.VatNumber);
+        Assert.Equal("45", customer.CommercialRegistration);
         Assert.Equal(CreatedAt, customer.CreatedAtUtc);
         Assert.Equal(CreatedAt, customer.UpdatedAtUtc);
         Assert.False(customer.IsArchived);
@@ -43,13 +44,11 @@ public sealed class CustomerTests
         Assert.Equal(UpdatedAt, customer.UpdatedAtUtc);
     }
 
-    [Theory]
-    [InlineData("31012345678900")]
-    [InlineData("31012345678900A")]
-    public void Create_RejectsMalformedVatNumber(string vatNumber)
+    [Fact]
+    public void Create_RejectsNonNumericVatNumber()
     {
         Assert.Throws<ArgumentException>(() => Customer.Create(
-            "عميل", null, vatNumber, null, null, null, null, CreatedAt));
+            "عميل", null, "12A", null, null, null, null, CreatedAt));
     }
 
     [Fact]
@@ -68,8 +67,6 @@ public sealed class CustomerTests
     {
         Assert.Throws<ArgumentException>(() => Customer.Create(
             new string('x', 201), null, null, null, null, null, null, CreatedAt));
-        Assert.Throws<ArgumentException>(() => Customer.Create(
-            "عميل", null, null, "123", null, null, null, CreatedAt));
         Assert.Throws<ArgumentException>(() => Customer.Create(
             "عميل", null, null, null, null, null, new string('x', 255), CreatedAt));
     }

@@ -111,7 +111,10 @@ public sealed class Customer
             nameEnglish,
             DomainFieldLimits.PartyName,
             nameof(nameEnglish));
-        string? validatedVatNumber = DomainTextRules.OptionalDigits(vatNumber, 15, nameof(vatNumber));
+        string? validatedVatNumber = DomainTextRules.OptionalDigits(
+            vatNumber,
+            DomainFieldLimits.TaxIdentifier,
+            nameof(vatNumber));
         string? validatedCommercialRegistration = DomainTextRules.OptionalDigits(
             commercialRegistration,
             DomainFieldLimits.CommercialRegistration,

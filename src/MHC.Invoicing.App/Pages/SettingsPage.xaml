@@ -31,11 +31,11 @@
                         </StackPanel>
                         <StackPanel Grid.Row="1" Spacing="6">
                             <TextBlock localization:Localization.TextKey="VatNumberLabel.Text" />
-                            <TextBox x:Name="CompanyVatNumber" localization:Localization.PlaceholderKey="VatNumber.PlaceholderText" localization:Localization.AutomationNameKey="VatNumber.AutomationProperties.Name" AutomationProperties.AutomationId="Settings.VatNumber" MaxLength="15" />
+                            <TextBox x:Name="CompanyVatNumber" MaxLength="50" localization:Localization.PlaceholderKey="VatNumber.PlaceholderText" localization:Localization.AutomationNameKey="VatNumber.AutomationProperties.Name" AutomationProperties.AutomationId="Settings.VatNumber" />
                         </StackPanel>
                         <StackPanel Grid.Row="1" Grid.Column="1" Spacing="6">
                             <TextBlock localization:Localization.TextKey="CommercialRegistrationLabel.Text" />
-                            <TextBox x:Name="CompanyCommercialRegistration" localization:Localization.PlaceholderKey="CommercialRegistration.PlaceholderText" localization:Localization.AutomationNameKey="CommercialRegistration.AutomationProperties.Name" AutomationProperties.AutomationId="Settings.CommercialRegistration" />
+                            <TextBox x:Name="CompanyCommercialRegistration" MaxLength="50" localization:Localization.PlaceholderKey="CommercialRegistration.PlaceholderText" localization:Localization.AutomationNameKey="CommercialRegistration.AutomationProperties.Name" AutomationProperties.AutomationId="Settings.CommercialRegistration" />
                         </StackPanel>
                         <StackPanel Grid.Row="2" Spacing="6">
                             <TextBlock localization:Localization.TextKey="BranchLabel.Text" />

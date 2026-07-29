@@ -135,9 +135,9 @@ public static class InvoiceValidator
         ValidateOptionalText(party.NameEnglish, DomainFieldLimits.PartyName, $"{prefix}.nameEnglish", errors);
         ValidateOptionalText(party.Address, DomainFieldLimits.Address, $"{prefix}.address", errors);
 
-        if (!IsDigits(party.VatNumber, 15))
+        if (!IsDigits(party.VatNumber, DomainFieldLimits.TaxIdentifier))
         {
-            Add(errors, $"{prefix}.vatNumber", "invalid_format", "VAT number must contain exactly 15 digits.");
+            Add(errors, $"{prefix}.vatNumber", "invalid_format", "VAT number must contain digits only.");
         }
 
         if (!IsDigits(party.CommercialRegistration, DomainFieldLimits.CommercialRegistration))
@@ -146,7 +146,7 @@ public static class InvoiceValidator
                 errors,
                 $"{prefix}.commercialRegistration",
                 "invalid_format",
-                $"Commercial registration must contain exactly {DomainFieldLimits.CommercialRegistration} digits.");
+                "Commercial registration must contain digits only.");
         }
     }
 
@@ -251,9 +251,9 @@ public static class InvoiceValidator
         }
     }
 
-    private static bool IsDigits(string? value, int exactLength) =>
+    private static bool IsDigits(string? value, int maxLength) =>
         string.IsNullOrWhiteSpace(value) ||
-        (value.Trim().Length == exactLength && value.Trim().All(char.IsAsciiDigit));
+        (value.Trim().Length <= maxLength && value.Trim().All(char.IsAsciiDigit));
 
     private static void ValidateRequiredText(
         string? value,

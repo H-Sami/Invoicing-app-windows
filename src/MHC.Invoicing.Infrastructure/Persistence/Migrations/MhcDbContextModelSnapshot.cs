@@ -197,7 +197,7 @@ namespace MHC.Invoicing.Infrastructure.Persistence.Migrations
                         .HasColumnName("branch");
 
                     b.Property<string>("CommercialRegistration")
-                        .HasMaxLength(10)
+                                            .HasMaxLength(50)
                         .HasColumnType("TEXT")
                         .HasColumnName("commercial_registration");
 
@@ -275,7 +275,7 @@ namespace MHC.Invoicing.Infrastructure.Persistence.Migrations
                         .HasColumnName("address");
 
                     b.Property<string>("CommercialRegistration")
-                        .HasMaxLength(10)
+                                            .HasMaxLength(50)
                         .HasColumnType("TEXT")
                         .HasColumnName("commercial_registration");
 
@@ -330,7 +330,7 @@ namespace MHC.Invoicing.Infrastructure.Persistence.Migrations
                         .HasColumnName("updated_at_utc_ms");
 
                     b.Property<string>("VatNumber")
-                        .HasMaxLength(15)
+                                            .HasMaxLength(50)
                         .HasColumnType("TEXT")
                         .HasColumnName("vat_number");
 
@@ -423,7 +423,7 @@ namespace MHC.Invoicing.Infrastructure.Persistence.Migrations
                         .HasColumnName("customer_address");
 
                     b.Property<string>("CustomerCommercialRegistration")
-                        .HasMaxLength(10)
+                                            .HasMaxLength(50)
                         .HasColumnType("TEXT")
                         .HasColumnName("customer_commercial_registration");
 
@@ -443,7 +443,7 @@ namespace MHC.Invoicing.Infrastructure.Persistence.Migrations
                         .HasColumnName("customer_name_english");
 
                     b.Property<string>("CustomerVatNumber")
-                        .HasMaxLength(15)
+                                            .HasMaxLength(50)
                         .HasColumnType("TEXT")
                         .HasColumnName("customer_vat_number");
 
@@ -614,7 +614,7 @@ namespace MHC.Invoicing.Infrastructure.Persistence.Migrations
                         .HasColumnName("customer_address");
 
                     b.Property<string>("CustomerCommercialRegistration")
-                        .HasMaxLength(10)
+                                            .HasMaxLength(50)
                         .HasColumnType("TEXT")
                         .HasColumnName("customer_commercial_registration");
 
@@ -636,7 +636,7 @@ namespace MHC.Invoicing.Infrastructure.Persistence.Migrations
                         .HasColumnName("customer_search_name");
 
                     b.Property<string>("CustomerVatNumber")
-                        .HasMaxLength(15)
+                                            .HasMaxLength(50)
                         .HasColumnType("TEXT")
                         .HasColumnName("customer_vat_number");
 
@@ -704,7 +704,7 @@ namespace MHC.Invoicing.Infrastructure.Persistence.Migrations
                         .HasColumnName("seller_branch");
 
                     b.Property<string>("SellerCommercialRegistration")
-                        .HasMaxLength(10)
+                                            .HasMaxLength(50)
                         .HasColumnType("TEXT")
                         .HasColumnName("seller_commercial_registration");
 
@@ -729,8 +729,8 @@ namespace MHC.Invoicing.Infrastructure.Persistence.Migrations
                         .HasColumnName("seller_name_english");
 
                     b.Property<string>("SellerVatNumber")
-                        .IsRequired()
-                        .HasMaxLength(15)
+                                            .IsRequired()
+                                            .HasMaxLength(50)
                         .HasColumnType("TEXT")
                         .HasColumnName("seller_vat_number");
 

@@ -13,8 +13,8 @@ public sealed class InvoiceValidatorTests
         InvoiceDraft draft = InvoiceDraft.Create(
             new DateOnly(2026, 7, 23),
             InvoiceDocumentType.CreditNote,
-            new DraftParty(" ", null, "123", null, null),
-            new DraftParty(" ", null, "31012345678900A", "123", null),
+            new DraftParty(" ", null, "12A", null, null),
+            new DraftParty(" ", null, "31012345678900A", "12A", null),
             PaymentMethod.BankTransfer,
             null,
             CreatedAt);

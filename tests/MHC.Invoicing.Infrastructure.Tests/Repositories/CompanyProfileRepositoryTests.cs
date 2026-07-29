@@ -26,8 +26,8 @@ public sealed class CompanyProfileRepositoryTests
             CompanyProfileSettings initial = new(
                 "تقنية إم إتش سي",
                 "MHC Technology",
-                "310123456789003",
-                "1010123456",
+                "123",
+                "45",
                 "الفرع الرئيسي",
                 "الرياض، المملكة العربية السعودية",
                 "المشغل الرئيسي",
@@ -40,6 +40,8 @@ public sealed class CompanyProfileRepositoryTests
 
             Assert.Equal(0, created.Revision);
             Assert.Equal(PaymentMethod.Card, loaded?.Profile.DefaultPaymentMethod);
+            Assert.Equal("123", loaded?.Profile.VatNumber);
+            Assert.Equal("45", loaded?.Profile.CommercialRegistration);
             Assert.Equal(logo, loaded?.Profile.LogoBytes);
             Assert.Equal("image/png", loaded?.Profile.LogoMimeType);
             CompanyProfileSettings updated = initial with { OperatorName = "مشغل محدث" };
@@ -66,7 +68,7 @@ public sealed class CompanyProfileRepositoryTests
 
     [Theory]
     [InlineData("", "310123456789003", "الفرع", "العنوان", "المشغل")]
-    [InlineData("شركة", "123", "الفرع", "العنوان", "المشغل")]
+    [InlineData("شركة", "12A", "الفرع", "العنوان", "المشغل")]
     [InlineData("شركة", "310123456789003", "", "العنوان", "المشغل")]
     [InlineData("شركة", "310123456789003", "الفرع", "", "المشغل")]
     [InlineData("شركة", "310123456789003", "الفرع", "العنوان", "")]

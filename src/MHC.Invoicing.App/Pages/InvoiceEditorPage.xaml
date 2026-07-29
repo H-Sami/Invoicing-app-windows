@@ -31,8 +31,8 @@
             <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
             <TextBox x:Name="CustomerNameArabic" AutomationProperties.AutomationId="CustomerSnapshot.NameArabic"/>
             <TextBox x:Name="CustomerNameEnglish" Grid.Column="1" AutomationProperties.AutomationId="CustomerSnapshot.NameEnglish"/>
-            <TextBox x:Name="CustomerVatNumber" Grid.Row="1" MaxLength="15" AutomationProperties.AutomationId="CustomerSnapshot.Vat"/>
-            <TextBox x:Name="CustomerCommercialRegistration" Grid.Row="1" Grid.Column="1" AutomationProperties.AutomationId="CustomerSnapshot.CommercialRegistration"/>
+            <TextBox x:Name="CustomerVatNumber" Grid.Row="1" MaxLength="50" AutomationProperties.AutomationId="CustomerSnapshot.Vat"/>
+            <TextBox x:Name="CustomerCommercialRegistration" Grid.Row="1" Grid.Column="1" MaxLength="50" AutomationProperties.AutomationId="CustomerSnapshot.CommercialRegistration"/>
             <TextBox x:Name="CustomerAddress" Grid.Row="2" Grid.ColumnSpan="2" AutomationProperties.AutomationId="CustomerSnapshot.Address"/>
           </Grid>
           <Button x:Name="SaveCustomerSnapshotButton" localization:Localization.ContentKey="SaveCustomerSnapshotAction.Content" localization:Localization.AutomationNameKey="SaveCustomerSnapshotAction.AutomationProperties.Name" AutomationProperties.AutomationId="CustomerSnapshot.Save" Click="SaveCustomerSnapshot_Click" HorizontalAlignment="Left" Style="{StaticResource MhcSecondaryButtonStyle}"/>

@@ -11,7 +11,7 @@ public sealed class ZatcaTlvEncoderTests
     {
         ZatcaQrData data = new(
             "مؤسسة إم إتش سي",
-            "310123456700003",
+            "123",
             new DateTimeOffset(2026, 7, 23, 5, 6, 7, TimeSpan.FromHours(3)),
             Money.FromRiyals(115.25m),
             Money.FromRiyals(15.03m));
@@ -20,7 +20,7 @@ public sealed class ZatcaTlvEncoderTests
         Dictionary<byte, string> decoded = Decode(encoded);
 
         Assert.Equal("مؤسسة إم إتش سي", decoded[1]);
-        Assert.Equal("310123456700003", decoded[2]);
+        Assert.Equal("123", decoded[2]);
         Assert.Equal("2026-07-23T05:06:07+03:00", decoded[3]);
         Assert.Equal("115.25", decoded[4]);
         Assert.Equal("15.03", decoded[5]);
@@ -38,6 +38,19 @@ public sealed class ZatcaTlvEncoderTests
             Money.Zero);
 
         Assert.Throws<ArgumentOutOfRangeException>(() => ZatcaTlvEncoder.Encode(data));
+    }
+
+    [Fact]
+    public void Encode_RejectsVatNumberBeyondDomainLimit()
+    {
+        ZatcaQrData data = new(
+            "MHC Technology",
+            new string('1', 51),
+            new DateTimeOffset(2026, 7, 23, 5, 6, 7, TimeSpan.FromHours(3)),
+            Money.FromRiyals(1m),
+            Money.Zero);
+
+        Assert.Throws<ArgumentException>(() => ZatcaTlvEncoder.Encode(data));
     }
 
     [Fact]

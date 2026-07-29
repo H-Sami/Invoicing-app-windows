@@ -103,7 +103,7 @@ public sealed class CompanyProfileRepository(MhcDbContext context) : ICompanyPro
             profile.Address);
         if (seller.VatNumber is null)
         {
-            throw new ArgumentException("A 15-digit seller VAT number is required.", nameof(profile));
+            throw new ArgumentException("A seller VAT number is required.", nameof(profile));
         }
 
         string branch = Required(profile.Branch, DomainFieldLimits.PartyName, nameof(profile.Branch));

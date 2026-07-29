@@ -27,7 +27,7 @@ public sealed record PartySnapshot(
         return new PartySnapshot(
             DomainTextRules.Required(nameArabic, DomainFieldLimits.PartyName, nameof(nameArabic)),
             DomainTextRules.Optional(nameEnglish, DomainFieldLimits.PartyName, nameof(nameEnglish)),
-            DomainTextRules.OptionalDigits(vatNumber, 15, nameof(vatNumber)),
+            DomainTextRules.OptionalDigits(vatNumber, DomainFieldLimits.TaxIdentifier, nameof(vatNumber)),
             DomainTextRules.OptionalDigits(
                 commercialRegistration,
                 DomainFieldLimits.CommercialRegistration,
