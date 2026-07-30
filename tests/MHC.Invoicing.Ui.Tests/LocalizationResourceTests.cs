@@ -40,10 +40,10 @@ public sealed class LocalizationResourceTests
     [Theory]
     [InlineData("TextBox", "DefaultTextBoxStyle")]
     [InlineData("AutoSuggestBox", "DefaultAutoSuggestBoxStyle")]
-    [InlineData("NumberBox", "DefaultNumberBoxStyle")]
+    [InlineData("NumberBox", null)]
     public void EditableControlsAcceptEnglishInputWithoutChangingApplicationLanguage(
         string targetType,
-        string defaultStyleKey)
+        string? defaultStyleKey)
     {
         string path = Path.Combine(
             FindRepositoryRoot(),
@@ -57,9 +57,16 @@ public sealed class LocalizationResourceTests
             controls.Root!.Elements(presentation + "Style"),
             element => (string?)element.Attribute("TargetType") == targetType);
 
-        Assert.Equal(
-            $"{{StaticResource {defaultStyleKey}}}",
-            (string?)style.Attribute("BasedOn"));
+        if (defaultStyleKey is null)
+        {
+            Assert.Null((string?)style.Attribute("BasedOn"));
+        }
+        else
+        {
+            Assert.Equal(
+                $"{{StaticResource {defaultStyleKey}}}",
+                (string?)style.Attribute("BasedOn"));
+        }
         XElement language = Assert.Single(
             style.Elements(presentation + "Setter"),
             element => (string?)element.Attribute("Property") == "Language");
@@ -223,6 +230,67 @@ public sealed class LocalizationResourceTests
                 element => (string?)element.Attribute(x + "Name") == controlName);
             Assert.Equal("50", (string?)editor.Attribute("MaxLength"));
         }
+    }
+
+    [Fact]
+    public void ItemEditorPopulatesVatOptionsBeforeSelectionAndBoundsDialogContent()
+    {
+        string root = FindRepositoryRoot();
+        string source = File.ReadAllText(
+            Path.Combine(root, "src", "MHC.Invoicing.App", "Pages", "ItemsPage.xaml.cs"));
+        string controls = File.ReadAllText(
+            Path.Combine(root, "src", "MHC.Invoicing.App", "Styles", "Controls.xaml"));
+
+        int finalOption = source.LastIndexOf("vat.Items.Add(", StringComparison.Ordinal);
+        int selection = source.IndexOf("vat.SelectedIndex =", StringComparison.Ordinal);
+        Assert.True(finalOption >= 0 && selection > finalOption);
+        Assert.Contains(
+            "Content = new ScrollViewer { Content = fields, MaxHeight = 520 },",
+            source,
+            StringComparison.Ordinal);
+        Assert.DoesNotContain("DefaultNumberBoxStyle", controls, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void ApplicationPreferencesCanBeSavedWithoutACompanyProfile()
+    {
+        string pages = Path.Combine(FindRepositoryRoot(), "src", "MHC.Invoicing.App", "Pages");
+        string source = File.ReadAllText(Path.Combine(pages, "SettingsPage.xaml.cs"));
+        int preferencesStart = source.IndexOf("private async void SavePreferences_Click", StringComparison.Ordinal);
+        int preferencesEnd = source.IndexOf("private async void SaveCompany_Click", preferencesStart, StringComparison.Ordinal);
+        Assert.True(preferencesStart >= 0 && preferencesEnd > preferencesStart);
+        string preferencesHandler = source[preferencesStart..preferencesEnd];
+        Assert.DoesNotContain("CompanyProfileSettings", preferencesHandler, StringComparison.Ordinal);
+        Assert.DoesNotContain("CompanyProfileRepository", preferencesHandler, StringComparison.Ordinal);
+        Assert.Contains("ApplyPreferencesAsync", preferencesHandler, StringComparison.Ordinal);
+
+        XNamespace x = "http://schemas.microsoft.com/winfx/2006/xaml";
+        XDocument xaml = XDocument.Load(Path.Combine(pages, "SettingsPage.xaml"));
+        Assert.Single(
+            xaml.Descendants(),
+            element => (string?)element.Attribute("AutomationProperties.AutomationId") == "Settings.SaveCompany"
+                && (string?)element.Attribute("Click") == "SaveCompany_Click");
+        Assert.Single(
+            xaml.Descendants(),
+            element => (string?)element.Attribute("AutomationProperties.AutomationId") == "Settings.SavePreferences"
+                && (string?)element.Attribute("Click") == "SavePreferences_Click");
+    }
+
+    [Fact]
+    public void WindowAndInstallerUseVersionedSuppliedBrandingWithoutSubtitle()
+    {
+        string root = FindRepositoryRoot();
+        string app = Path.Combine(root, "src", "MHC.Invoicing.App");
+        string windowXaml = File.ReadAllText(Path.Combine(app, "MainWindow.xaml"));
+        string windowCode = File.ReadAllText(Path.Combine(app, "MainWindow.xaml.cs"));
+        string project = File.ReadAllText(Path.Combine(app, "MHC.Invoicing.App.csproj"));
+        string installer = File.ReadAllText(Path.Combine(root, "installer", "MHC.Invoicing.iss"));
+
+        Assert.DoesNotContain("AppSubtitle.Text", windowXaml, StringComparison.Ordinal);
+        Assert.Contains("AppWindow.SetIcon", windowCode, StringComparison.Ordinal);
+        Assert.Contains("MHCLogo-20260729.ico", windowCode, StringComparison.Ordinal);
+        Assert.Contains("<ApplicationIcon>Assets\\MHCLogo-20260729.ico</ApplicationIcon>", project, StringComparison.Ordinal);
+        Assert.Equal(3, Regex.Count(installer, "MHCLogo-20260729\\.ico"));
     }
 
     private static HashSet<string> LoadKeys(string path) =>

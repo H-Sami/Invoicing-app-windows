@@ -7,7 +7,7 @@
   <Style TargetType="AutoSuggestBox" BasedOn="{StaticResource DefaultAutoSuggestBoxStyle}">
     <Setter Property="Language" Value="en-US" />
   </Style>
-  <Style TargetType="NumberBox" BasedOn="{StaticResource DefaultNumberBoxStyle}">
+  <Style TargetType="NumberBox">
     <Setter Property="Language" Value="en-US" />
   </Style>
   <Style x:Key="MhcCardStyle" TargetType="Border">

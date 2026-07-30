@@ -68,6 +68,7 @@
                             <TextBlock x:Name="LogoStatus" localization:Localization.TextKey="CompanyLogoNone.Message" Style="{StaticResource MhcMutedTextStyle}" AutomationProperties.AutomationId="Settings.LogoStatus" />
                         </StackPanel>
                     </Grid>
+                    <Button localization:Localization.ContentKey="SaveCompanyAction.Content" localization:Localization.AutomationNameKey="SaveCompanyAction.AutomationProperties.Name" AutomationProperties.AutomationId="Settings.SaveCompany" Click="SaveCompany_Click" HorizontalAlignment="Left" Style="{StaticResource MhcPrimaryButtonStyle}" />
                 </StackPanel>
             </Border>
             <Border Style="{StaticResource MhcCardStyle}">
@@ -91,7 +92,7 @@
                             </ComboBox>
                         </StackPanel>
                     </Grid>
-                    <Button localization:Localization.ContentKey="SaveSettingsAction.Content" localization:Localization.AutomationNameKey="SaveSettingsAction.AutomationProperties.Name" AutomationProperties.AutomationId="Settings.Save" Click="SavePreferences_Click" HorizontalAlignment="Left" Style="{StaticResource MhcPrimaryButtonStyle}" />
+                    <Button localization:Localization.ContentKey="SaveSettingsAction.Content" localization:Localization.AutomationNameKey="SaveSettingsAction.AutomationProperties.Name" AutomationProperties.AutomationId="Settings.SavePreferences" Click="SavePreferences_Click" HorizontalAlignment="Left" Style="{StaticResource MhcPrimaryButtonStyle}" />
                 </StackPanel>
             </Border>
             <Border Style="{StaticResource MhcCardStyle}">

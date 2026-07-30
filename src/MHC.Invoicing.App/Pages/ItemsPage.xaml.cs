@@ -202,11 +202,11 @@ public sealed partial class ItemsPage : Page
         {
             Header = Text("فئة الضريبة", "VAT category"),
             HorizontalAlignment = HorizontalAlignment.Stretch,
-            SelectedIndex = row is null ? 0 : VatIndex(row.VatCategory),
         };
         vat.Items.Add(Text("قياسية 15٪", "Standard 15%"));
         vat.Items.Add(Text("نسبة صفرية", "Zero-rated"));
         vat.Items.Add(Text("معفاة", "Exempt"));
+        vat.SelectedIndex = row is null ? 0 : VatIndex(row.VatCategory);
         AutomationProperties.SetName(vat, vat.Header?.ToString() ?? string.Empty);
 
         StackPanel fields = new() { Spacing = 10 };
@@ -220,7 +220,7 @@ public sealed partial class ItemsPage : Page
         {
             XamlRoot = XamlRoot,
             Title = row is null ? Text("صنف أو خدمة جديدة", "New item or service") : Text("تعديل الصنف أو الخدمة", "Edit item or service"),
-            Content = fields,
+            Content = new ScrollViewer { Content = fields, MaxHeight = 520 },
             PrimaryButtonText = Text("حفظ", "Save"),
             CloseButtonText = Text("إلغاء", "Cancel"),
             DefaultButton = ContentDialogButton.Primary,

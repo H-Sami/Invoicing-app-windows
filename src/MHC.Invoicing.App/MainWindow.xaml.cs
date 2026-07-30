@@ -36,6 +36,10 @@ public sealed partial class MainWindow : Window
         WindowRoot.RequestedTheme = requestedTheme;
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(AppTitleBar);
+        AppWindow.SetIcon(System.IO.Path.Combine(
+            AppContext.BaseDirectory,
+            "Assets",
+            "MHCLogo-20260729.ico"));
         SystemBackdrop = new MicaBackdrop();
         AppWindow.Resize(new SizeInt32(1280, 820));
         PrimaryNavigation.SelectedItem = DashboardItem;

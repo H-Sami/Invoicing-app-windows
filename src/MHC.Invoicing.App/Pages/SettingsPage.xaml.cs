@@ -95,12 +95,6 @@ public sealed partial class SettingsPage : Page
 
     private async void SavePreferences_Click(object sender, RoutedEventArgs e)
     {
-        if (_services is null)
-        {
-            SetStatus(L("DatabaseAccessFailure.Message"));
-            return;
-        }
-
         string language = LanguagePicker.SelectedIndex == 1 ? "en-US" : "ar-SA";
         ElementTheme theme = ThemePicker.SelectedIndex switch
         {
@@ -108,6 +102,25 @@ public sealed partial class SettingsPage : Page
             2 => ElementTheme.Dark,
             _ => ElementTheme.Default,
         };
+        try
+        {
+            SetStatus(L("SettingsSaved.Message"));
+            await ((App)Microsoft.UI.Xaml.Application.Current).ApplyPreferencesAsync(language, theme);
+        }
+        catch (Exception)
+        {
+            SetStatus(L("SettingsSaveFailure.Message"));
+        }
+    }
+
+    private async void SaveCompany_Click(object sender, RoutedEventArgs e)
+    {
+        if (_services is null)
+        {
+            SetStatus(L("DatabaseAccessFailure.Message"));
+            return;
+        }
+
         try
         {
             CompanyProfileSettings profile = new(
@@ -130,8 +143,7 @@ public sealed partial class SettingsPage : Page
             }
 
             _profileRevision = saved.Revision;
-            SetStatus(L("SettingsSaved.Message"));
-            await ((App)Microsoft.UI.Xaml.Application.Current).ApplyPreferencesAsync(language, theme);
+            SetStatus(L("CompanyProfileSaved.Message"));
         }
         catch (PersistenceConcurrencyException)
         {

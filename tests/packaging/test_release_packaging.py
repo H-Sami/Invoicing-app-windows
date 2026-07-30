@@ -249,12 +249,17 @@ class RuntimeAssetValidationTests(unittest.TestCase):
             {key: qa[key] for key in qa if key != "icons"},
         )
         expected_production_icons = [
-            r'Name: "{group}\MHC Invoices V4"; Filename: "{app}\MHC.Invoicing.exe"; WorkingDir: "{app}"; IconFilename: "{app}\Assets\AppIcon.ico"; IconIndex: 0',
-            r'Name: "{autodesktop}\MHC Invoices V4"; Filename: "{app}\MHC.Invoicing.exe"; WorkingDir: "{app}"; IconFilename: "{app}\Assets\AppIcon.ico"; IconIndex: 0; Tasks: desktopicon',
+            r'Name: "{group}\MHC Invoices V4"; Filename: "{app}\MHC.Invoicing.exe"; WorkingDir: "{app}"; IconFilename: "{app}\Assets\MHCLogo-20260729.ico"; IconIndex: 0',
+            r'Name: "{autodesktop}\MHC Invoices V4"; Filename: "{app}\MHC.Invoicing.exe"; WorkingDir: "{app}"; IconFilename: "{app}\Assets\MHCLogo-20260729.ico"; IconIndex: 0; Tasks: desktopicon',
         ]
         expected_qa_icons = [icon.replace("MHC Invoices V4", "MHC Invoices V4 - LOCAL QA") for icon in expected_production_icons]
         self.assertEqual(expected_production_icons, production["icons"])
         self.assertEqual(expected_qa_icons, qa["icons"])
+        self.assertIn(
+            r"SetupIconFile=..\src\MHC.Invoicing.App\Assets\MHCLogo-20260729.ico",
+            installer,
+        )
+        self.assertIn("SHChangeNotify(ShellChangeAssociationChanged", cleanup_include)
         self.assertEqual(1, production["cleanup_include_count"])
         self.assertEqual(1, qa["cleanup_include_count"])
 

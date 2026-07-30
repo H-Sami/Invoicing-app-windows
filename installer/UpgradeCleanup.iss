@@ -3,6 +3,12 @@ const
   FileAttributeDirectory = $10;
   FileAttributeReparsePoint = $400;
   PayloadManifestName = '.mhc-payload-manifest.txt';
+  ShellChangeAssociationChanged = $08000000;
+  ShellChangeIdList = $0000;
+
+procedure SHChangeNotify(EventId: LongWord; Flags: LongWord;
+  Item1: LongWord; Item2: LongWord);
+  external 'SHChangeNotify@shell32.dll stdcall';
 
 function IsPreservedUninstallerFile(const FileName: String): Boolean;
 var
@@ -165,4 +171,6 @@ begin
     if not CleanObsoletePayload(AppDirectory, '', True, Manifest) then
       Log('One or more obsolete payload entries could not be removed; the installed payload remains usable.');
   end;
+  SHChangeNotify(ShellChangeAssociationChanged, ShellChangeIdList, 0, 0);
+  Log('Notified Explorer that installed shortcut and taskbar branding changed.');
 end;

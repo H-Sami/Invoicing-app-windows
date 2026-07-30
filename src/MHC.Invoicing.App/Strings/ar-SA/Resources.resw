@@ -5,7 +5,7 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
   <data name="AppTitle.Text" xml:space="preserve"><value>فواتير MHC</value></data>
-  <data name="AppSubtitle.Text" xml:space="preserve"><value>إدارة الفواتير المحلية</value></data>
+
   <data name="DashboardNav.Content" xml:space="preserve"><value>الرئيسية</value></data>
   <data name="NewInvoiceNav.Content" xml:space="preserve"><value>فاتورة جديدة</value></data>
   <data name="InvoicesNav.Content" xml:space="preserve"><value>الفواتير</value></data>
@@ -100,6 +100,7 @@
   <data name="LanguageLabel.Text" xml:space="preserve"><value>اللغة</value></data>
   <data name="ThemeLabel.Text" xml:space="preserve"><value>المظهر</value></data>
   <data name="SaveSettingsAction.Content" xml:space="preserve"><value>حفظ الإعدادات</value></data>
+  <data name="SaveCompanyAction.Content" xml:space="preserve"><value>حفظ بيانات المنشأة</value></data>
   <data name="BackupSection.Text" xml:space="preserve"><value>النسخ الاحتياطي</value></data>
   <data name="BackupHint.Text" xml:space="preserve"><value>تتضمن النسخة بيانات العملاء والفواتير ومستندات PDF.</value></data>
   <data name="CreateBackupAction.Content" xml:space="preserve"><value>إنشاء نسخة احتياطية</value></data>
@@ -244,7 +245,8 @@
   <data name="OperatorName.AutomationProperties.Name" xml:space="preserve"><value>اسم مُصدر الفاتورة</value></data>
   <data name="LanguagePicker.AutomationProperties.Name" xml:space="preserve"><value>لغة التطبيق</value></data>
   <data name="ThemePicker.AutomationProperties.Name" xml:space="preserve"><value>مظهر التطبيق</value></data>
-  <data name="SaveSettingsAction.AutomationProperties.Name" xml:space="preserve"><value>حفظ بيانات المنشأة وإعدادات اللغة والمظهر</value></data>
+  <data name="SaveSettingsAction.AutomationProperties.Name" xml:space="preserve"><value>حفظ لغة التطبيق ومظهره</value></data>
+  <data name="SaveCompanyAction.AutomationProperties.Name" xml:space="preserve"><value>حفظ بيانات المنشأة</value></data>
   <data name="CreateBackupAction.AutomationProperties.Name" xml:space="preserve"><value>إنشاء نسخة احتياطية آمنة</value></data>
   <data name="RestoreBackupAction.AutomationProperties.Name" xml:space="preserve"><value>استعادة نسخة احتياطية بعد التأكيد</value></data>
   <data name="MaintenanceProgress.AutomationProperties.Name" xml:space="preserve"><value>عملية صيانة قاعدة البيانات قيد التنفيذ</value></data>
@@ -260,6 +262,7 @@
   <data name="CompanyProfileLoadFailure.Message" xml:space="preserve"><value>تعذر تحميل بيانات المنشأة.</value></data>
   <data name="CompanyProfileConflict.Message" xml:space="preserve"><value>تغيرت بيانات المنشأة في عملية أخرى. أعد فتح الإعدادات ثم حاول مجدداً.</value></data>
   <data name="CompanyProfileValidation.Message" xml:space="preserve"><value>أدخل اسم المنشأة والرقم الضريبي الرقمي والفرع والعنوان واسم المُصدر.</value></data>
-  <data name="SettingsSaved.Message" xml:space="preserve"><value>تم حفظ بيانات المنشأة وإعدادات التطبيق.</value></data>
+  <data name="CompanyProfileSaved.Message" xml:space="preserve"><value>تم حفظ بيانات المنشأة.</value></data>
+  <data name="SettingsSaved.Message" xml:space="preserve"><value>تم حفظ تفضيلات التطبيق.</value></data>
   <data name="SettingsSaveFailure.Message" xml:space="preserve"><value>تعذر حفظ الإعدادات بأمان.</value></data>
 </root>
