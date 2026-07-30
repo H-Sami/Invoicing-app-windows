@@ -49,17 +49,7 @@
                             <TextBlock localization:Localization.TextKey="CompanyAddressLabel.Text" />
                             <TextBox x:Name="CompanyAddress" localization:Localization.PlaceholderKey="CompanyAddress.PlaceholderText" localization:Localization.AutomationNameKey="CompanyAddress.AutomationProperties.Name" AutomationProperties.AutomationId="Settings.Address" TextWrapping="Wrap" AcceptsReturn="True" />
                         </StackPanel>
-                        <StackPanel Grid.Row="4" Spacing="6">
-                            <TextBlock localization:Localization.TextKey="DefaultPaymentMethodLabel.Text" />
-                            <ComboBox x:Name="DefaultPaymentMethodPicker" SelectedIndex="0" HorizontalAlignment="Stretch" localization:Localization.AutomationNameKey="DefaultPaymentMethodPicker.AutomationProperties.Name" AutomationProperties.AutomationId="Settings.DefaultPaymentMethod">
-                                <ComboBoxItem localization:Localization.ContentKey="PaymentMethodCash.Content" />
-                                <ComboBoxItem localization:Localization.ContentKey="PaymentMethodCard.Content" />
-                                <ComboBoxItem localization:Localization.ContentKey="PaymentMethodBankTransfer.Content" />
-                                <ComboBoxItem localization:Localization.ContentKey="PaymentMethodCredit.Content" />
-                                <ComboBoxItem localization:Localization.ContentKey="PaymentMethodOther.Content" />
-                            </ComboBox>
-                        </StackPanel>
-                        <StackPanel Grid.Row="4" Grid.Column="1" Spacing="6">
+                        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Spacing="6">
                             <TextBlock localization:Localization.TextKey="CompanyLogoLabel.Text" />
                             <StackPanel Orientation="Horizontal" Spacing="8">
                                 <Button localization:Localization.ContentKey="ChooseLogoAction.Content" localization:Localization.AutomationNameKey="ChooseLogoAction.AutomationProperties.Name" AutomationProperties.AutomationId="Settings.ChooseLogo" Click="ChooseLogo_Click" Style="{StaticResource MhcSecondaryButtonStyle}" />

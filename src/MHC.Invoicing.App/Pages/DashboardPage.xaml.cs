@@ -16,6 +16,9 @@ public sealed partial class DashboardPage : Page
     public DashboardPage()
     {
         InitializeComponent();
+        FlowDirection = LocalizationState.Language == "ar-SA"
+            ? FlowDirection.RightToLeft
+            : FlowDirection.LeftToRight;
     }
 
     private static string L(string key) => LocalizationState.GetString(key);
@@ -138,27 +141,23 @@ public sealed partial class DashboardPage : Page
         MHC.Invoicing.Application.Persistence.InvoiceSummary Invoice,
         CultureInfo Culture)
     {
-        public override string ToString()
-        {
-            decimal signedAmount = Invoice.DocumentType == InvoiceDocumentType.CreditNote
+        public string PublicNumber => Invoice.PublicNumber;
+
+        public string TypeAndStatus => Invoice.IsVoided
+            ? string.Concat(L($"DocumentType.{Invoice.DocumentType}"), " - ", L("InvoiceStatus.Voided"))
+            : L($"DocumentType.{Invoice.DocumentType}");
+
+        public string CustomerName => Invoice.CustomerNameArabic;
+
+        public string BusinessDate => Invoice.BusinessDate.ToString("d", Culture);
+
+        public string Amount => string.Concat(
+            (Invoice.DocumentType == InvoiceDocumentType.CreditNote
                 ? -Invoice.GrandTotal.Riyals
-                : Invoice.GrandTotal.Riyals;
-            string voidStatus = Invoice.IsVoided
-                ? string.Concat(" • ", L("InvoiceStatus.Voided"))
-                : string.Empty;
-            return string.Concat(
-                Invoice.PublicNumber,
-                " • ",
-                L($"DocumentType.{Invoice.DocumentType}"),
-                voidStatus,
-                " • ",
-                Invoice.CustomerNameArabic,
-                " • ",
-                Invoice.BusinessDate.ToString("d", Culture),
-                " • ",
-                signedAmount.ToString("N2", Culture),
-                " ",
-                MHC.Invoicing.Domain.ValueObjects.Money.Currency);
-        }
+                : Invoice.GrandTotal.Riyals).ToString("N2", Culture),
+            " ",
+            MHC.Invoicing.Domain.ValueObjects.Money.Currency);
+
+        public string AccessibleName => string.Join(", ", PublicNumber, TypeAndStatus, CustomerName, BusinessDate, Amount);
     }
 }

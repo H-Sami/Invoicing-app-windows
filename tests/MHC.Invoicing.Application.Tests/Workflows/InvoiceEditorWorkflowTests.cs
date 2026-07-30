@@ -11,10 +11,10 @@ namespace MHC.Invoicing.Application.Tests.Workflows;
 public sealed class InvoiceEditorWorkflowTests
 {
     [Fact]
-    public async Task InitializeUsesSaudiBusinessDateAndCompanyDefaultPaymentMethod()
+    public async Task InitializeUsesSaudiBusinessDateAndRequiresPaymentMethodSelection()
     {
         FakeDraftRepository repository = new();
-        FakeCompanyProfile profile = new() { PaymentMethod = PaymentMethod.Card };
+        FakeCompanyProfile profile = new();
         InvoiceEditorWorkflow workflow = CreateWorkflow(
             repository,
             profile: profile,
@@ -23,8 +23,35 @@ public sealed class InvoiceEditorWorkflowTests
         await workflow.InitializeAsync(cancellationToken: TestContext.Current.CancellationToken);
 
         Assert.Equal(new DateOnly(2026, 7, 24), workflow.State.Draft.BusinessDate);
-        Assert.Equal(PaymentMethod.Card, workflow.State.Draft.PaymentMethod);
+        Assert.Equal((PaymentMethod)0, workflow.State.Draft.PaymentMethod);
+        Assert.False(workflow.State.CanIssue);
         Assert.True(workflow.State.IsCompanyProfileReady);
+    }
+
+    [Fact]
+    public async Task SelectingPaymentMethodPersistsItAndClearsPaymentValidation()
+    {
+        FakeDraftRepository repository = new();
+        FakeLookup lookup = new();
+        InvoiceEditorWorkflow workflow = CreateWorkflow(repository, lookup: lookup);
+        await workflow.InitializeAsync(cancellationToken: TestContext.Current.CancellationToken);
+        await workflow.AddCatalogItemAsync(
+            lookup.Item.Id,
+            TestContext.Current.CancellationToken);
+
+        Assert.Contains(
+            workflow.State.Errors,
+            error => error.Field == "paymentMethod" && error.Code == "invalid");
+        Assert.False(workflow.State.CanIssue);
+
+        await workflow.SetPaymentMethodAsync(
+            PaymentMethod.BankTransfer,
+            TestContext.Current.CancellationToken);
+
+        Assert.Equal(PaymentMethod.BankTransfer, workflow.State.Draft.PaymentMethod);
+        Assert.DoesNotContain(workflow.State.Errors, error => error.Field == "paymentMethod");
+        Assert.True(workflow.State.CanIssue);
+        Assert.Equal(2, workflow.State.Revision);
     }
 
     [Fact]
@@ -69,14 +96,15 @@ public sealed class InvoiceEditorWorkflowTests
         await workflow.InitializeAsync(cancellationToken: TestContext.Current.CancellationToken);
 
         await workflow.AddCatalogItemAsync(lookup.Item.Id, TestContext.Current.CancellationToken);
+        await workflow.SetPaymentMethodAsync(PaymentMethod.Card, TestContext.Current.CancellationToken);
 
         Assert.Single(workflow.State.Draft.Lines);
         Assert.Equal(Money.FromRiyals(100m), workflow.State.Subtotal);
         Assert.Equal(Money.FromRiyals(15m), workflow.State.Vat);
         Assert.Equal(Money.FromRiyals(115m), workflow.State.GrandTotal);
-        Assert.Equal(1, workflow.State.Revision);
+        Assert.Equal(2, workflow.State.Revision);
         Assert.True(workflow.State.CanIssue);
-        Assert.Equal(2, repository.Saves.Count);
+        Assert.Equal(3, repository.Saves.Count);
     }
 
     [Fact]
@@ -175,13 +203,14 @@ public sealed class InvoiceEditorWorkflowTests
         InvoiceEditorWorkflow workflow = CreateWorkflow(repository, lookup, issuance);
         await workflow.InitializeAsync(cancellationToken: TestContext.Current.CancellationToken);
         await workflow.AddCatalogItemAsync(lookup.Item.Id, TestContext.Current.CancellationToken);
+        await workflow.SetPaymentMethodAsync(PaymentMethod.BankTransfer, TestContext.Current.CancellationToken);
 
         Assert.Null(await workflow.IssueAsync(false, TestContext.Current.CancellationToken));
         IssuedInvoiceReference? issued = await workflow.IssueAsync(true, TestContext.Current.CancellationToken);
 
         Assert.NotNull(issued);
         Assert.Equal(workflow.State.Draft.Id, issuance.DraftId);
-        Assert.Equal(1, issuance.Revision);
+        Assert.Equal(2, issuance.Revision);
         Assert.Equal("MHC-2026-100", workflow.State.IssuedInvoice!.PublicNumber);
     }
 
@@ -228,6 +257,7 @@ public sealed class InvoiceEditorWorkflowTests
         await Assert.ThrowsAsync<InvalidOperationException>(() =>
             workflow.PreviewAsync(TestContext.Current.CancellationToken));
         await workflow.AddCatalogItemAsync(lookup.Item.Id, TestContext.Current.CancellationToken);
+        await workflow.SetPaymentMethodAsync(PaymentMethod.Card, TestContext.Current.CancellationToken);
         await workflow.IssueAsync(true, TestContext.Current.CancellationToken);
         await workflow.PreviewAsync(TestContext.Current.CancellationToken);
         await workflow.PrintAsync(TestContext.Current.CancellationToken);
@@ -290,6 +320,7 @@ public sealed class InvoiceEditorWorkflowTests
         await workflow.InitializeAsync(cancellationToken: TestContext.Current.CancellationToken);
         repository.ReleaseFirstMutation();
         await workflow.AddCatalogItemAsync(lookup.Item.Id, TestContext.Current.CancellationToken);
+        await workflow.SetPaymentMethodAsync(PaymentMethod.Card, TestContext.Current.CancellationToken);
         repository.BlockNextMutation();
 
         Task<IssuedInvoiceReference?> issue = workflow.IssueAsync(
@@ -317,6 +348,7 @@ public sealed class InvoiceEditorWorkflowTests
         InvoiceEditorWorkflow workflow = CreateWorkflow(repository, lookup, issuance);
         await workflow.InitializeAsync(cancellationToken: TestContext.Current.CancellationToken);
         await workflow.AddCatalogItemAsync(lookup.Item.Id, TestContext.Current.CancellationToken);
+        await workflow.SetPaymentMethodAsync(PaymentMethod.Card, TestContext.Current.CancellationToken);
 
         Task<IssuedInvoiceReference?> first = workflow.IssueAsync(true, TestContext.Current.CancellationToken);
         await issuance.FirstCallEntered;
@@ -354,10 +386,8 @@ public sealed class InvoiceEditorWorkflowTests
     {
         public bool IsReady { get; set; } = true;
 
-        public PaymentMethod PaymentMethod { get; set; } = PaymentMethod.Cash;
-
         public Task<InvoiceEditorCompanyProfile> GetAsync(CancellationToken cancellationToken = default) =>
-            Task.FromResult(new InvoiceEditorCompanyProfile(IsReady, PaymentMethod));
+            Task.FromResult(new InvoiceEditorCompanyProfile(IsReady));
     }
 
     private sealed class FakeLookup : IInvoiceEditorLookup

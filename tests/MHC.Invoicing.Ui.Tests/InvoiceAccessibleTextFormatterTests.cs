@@ -29,10 +29,12 @@ public sealed class InvoiceAccessibleTextFormatterTests
             "SKU", "SKU-1", "Quantity", "2.000", "Unit", "hour", "Unit price", "Discount", "100.00",
             "Net", "900.00", "VAT category", "Standard VAT 15%", "VAT", "135.00", "Gross", "1,035.00",
             "Line 2", "Exempt", "Exemption code", "VATEX-SA-29", "Exemption reason", "Qualifying exemption",
-            "Subtotal", "Total including VAT", "Notes", "Customer adjustment", "generated locally",
+            "Subtotal", "Total including VAT", "Notes", "Customer adjustment",
         ];
         foreach (string expected in requiredText)
             Assert.Contains(expected, text, StringComparison.Ordinal);
+        Assert.DoesNotContain("This document was generated locally", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("تم إنشاء هذا المستند محلياً", text, StringComparison.Ordinal);
         Assert.Contains($"\u2066{id:D}\u2069", text, StringComparison.Ordinal);
     }
 

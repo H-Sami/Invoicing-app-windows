@@ -27,6 +27,7 @@ public sealed partial class SettingsPage : Page
     private int? _profileRevision;
     private byte[]? _logoBytes;
     private string? _logoMimeType;
+    private PaymentMethod _legacyDefaultPaymentMethod = PaymentMethod.Cash;
 
     public SettingsPage()
     {
@@ -81,7 +82,7 @@ public sealed partial class SettingsPage : Page
                 CompanyBranch.Text = profile.Profile.Branch;
                 CompanyAddress.Text = profile.Profile.Address;
                 CompanyOperatorName.Text = profile.Profile.OperatorName;
-                DefaultPaymentMethodPicker.SelectedIndex = (int)profile.Profile.DefaultPaymentMethod - 1;
+                _legacyDefaultPaymentMethod = profile.Profile.DefaultPaymentMethod;
                 _logoBytes = profile.Profile.LogoBytes?.ToArray();
                 _logoMimeType = profile.Profile.LogoMimeType;
                 LogoStatus.Text = _logoBytes is null ? L("CompanyLogoNone.Message") : L("CompanyLogoSelected.Message");
@@ -131,7 +132,7 @@ public sealed partial class SettingsPage : Page
                 CompanyBranch.Text,
                 CompanyAddress.Text,
                 CompanyOperatorName.Text,
-                (PaymentMethod)(DefaultPaymentMethodPicker.SelectedIndex + 1),
+                _legacyDefaultPaymentMethod,
                 _logoBytes,
                 _logoMimeType);
             VersionedCompanyProfile saved;

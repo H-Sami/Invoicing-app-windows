@@ -33,7 +33,27 @@
                 MinHeight="160"
                 AutomationProperties.AutomationId="Dashboard.RecentInvoices"
                 SelectionMode="None"
-                Visibility="Collapsed" />
+                Visibility="Collapsed">
+              <ListView.ItemTemplate>
+                <DataTemplate>
+                  <Border Padding="10,8" AutomationProperties.Name="{Binding AccessibleName}">
+                    <StackPanel Spacing="6">
+                      <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding PublicNumber}" FlowDirection="LeftToRight" FontWeight="SemiBold"/>
+                        <TextBlock Grid.Column="1" Text="{Binding TypeAndStatus}" TextWrapping="Wrap"/>
+                      </Grid>
+                      <TextBlock Text="{Binding CustomerName}" TextWrapping="Wrap"/>
+                      <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding BusinessDate}" FlowDirection="LeftToRight" Style="{StaticResource MhcMutedTextStyle}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Amount}" FlowDirection="LeftToRight" FontWeight="SemiBold"/>
+                      </Grid>
+                    </StackPanel>
+                  </Border>
+                </DataTemplate>
+              </ListView.ItemTemplate>
+            </ListView>
           </StackPanel>
         </Border>
         <Border Grid.Column="1" Style="{StaticResource MhcCardStyle}">

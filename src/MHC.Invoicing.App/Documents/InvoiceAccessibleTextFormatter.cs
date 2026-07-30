@@ -67,10 +67,6 @@ internal static class InvoiceAccessibleTextFormatter
         AppendMoney(text, Localized(english, "Total including VAT", "الإجمالي شامل الضريبة"), snapshot.GrandTotal.Riyals, english, culture);
         if (snapshot.ShowNotes)
             AppendOptionalField(text, Localized(english, "Notes", "ملاحظات"), snapshot.Notes);
-        text.AppendLine(Localized(
-            english,
-            "This document was generated locally.",
-            "تم إنشاء هذا المستند محلياً."));
         return text.ToString().TrimEnd();
     }
 

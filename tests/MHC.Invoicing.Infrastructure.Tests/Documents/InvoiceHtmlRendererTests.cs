@@ -32,6 +32,8 @@ public sealed class InvoiceHtmlRendererTests
         Assert.Contains("MHC-2026-100", html, StringComparison.Ordinal);
         Assert.Contains(model.Serial.ToString("D"), html, StringComparison.Ordinal);
         Assert.DoesNotContain("{{", html, StringComparison.Ordinal);
+        Assert.DoesNotContain("This document was generated locally", html, StringComparison.Ordinal);
+        Assert.DoesNotContain("تم إنشاء هذا المستند محلياً", html, StringComparison.Ordinal);
     }
 
     [Fact]

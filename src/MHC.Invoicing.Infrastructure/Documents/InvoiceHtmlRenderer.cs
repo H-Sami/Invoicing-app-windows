@@ -49,7 +49,6 @@ public sealed class InvoiceHtmlRenderer : IInvoiceHtmlRenderer
             .totals .row:last-child { border-bottom: 0; font-size: 14px; font-weight: 700; }
             .notes { margin-top: 12px; white-space: pre-wrap; }
             .credit { border: 2px solid #333; padding: 7px 10px; margin-top: 10px; font-weight: 700; text-align: center; }
-            footer { margin-top: 14px; padding-top: 8px; border-top: 1px solid #777; color: #555; font-size: 9px; text-align: center; }
             tr { break-inside: avoid; }
             </style>
             </head><body><main class="document">
@@ -166,7 +165,7 @@ public sealed class InvoiceHtmlRenderer : IInvoiceHtmlRenderer
             html.Append("</div></section>");
         }
 
-        html.Append("<footer>تم إنشاء هذا المستند محلياً / This document was generated locally</footer></main></body></html>");
+        html.Append("</main></body></html>");
         return html.ToString();
     }
 

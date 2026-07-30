@@ -81,8 +81,7 @@
   <data name="Branch.PlaceholderText" xml:space="preserve"><value>الفرع المُصدر</value></data>
   <data name="CompanyAddressLabel.Text" xml:space="preserve"><value>عنوان المنشأة</value></data>
   <data name="CompanyAddress.PlaceholderText" xml:space="preserve"><value>العنوان الظاهر على الفواتير</value></data>
-  <data name="DefaultPaymentMethodLabel.Text" xml:space="preserve"><value>طريقة الدفع الافتراضية</value></data>
-  <data name="DefaultPaymentMethodPicker.AutomationProperties.Name" xml:space="preserve"><value>طريقة الدفع الافتراضية للفواتير الجديدة</value></data>
+
   <data name="PaymentMethodCash.Content" xml:space="preserve"><value>نقداً</value></data>
   <data name="PaymentMethodCard.Content" xml:space="preserve"><value>بطاقة</value></data>
   <data name="PaymentMethodBankTransfer.Content" xml:space="preserve"><value>تحويل بنكي</value></data>
@@ -124,6 +123,9 @@
   <data name="SaveCustomerSnapshotAction.Content" xml:space="preserve"><value>حفظ بيانات عميل الفاتورة</value></data>
   <data name="SaveCustomerSnapshotAction.AutomationProperties.Name" xml:space="preserve"><value>حفظ نسخة بيانات العميل القابلة للتعديل لهذه الفاتورة</value></data>
   <data name="BusinessDatePicker.AutomationProperties.Name" xml:space="preserve"><value>تاريخ الفاتورة</value></data>
+  <data name="InvoicePaymentMethodLabel.Text" xml:space="preserve"><value>طريقة الدفع</value></data>
+  <data name="InvoicePaymentMethodPicker.PlaceholderText" xml:space="preserve"><value>اختر طريقة الدفع</value></data>
+  <data name="InvoicePaymentMethodPicker.AutomationProperties.Name" xml:space="preserve"><value>طريقة الدفع لهذه الفاتورة</value></data>
   <data name="EditorLinesSection.Text" xml:space="preserve"><value>بنود الفاتورة</value></data>
   <data name="AddOneOffLineAction.Content" xml:space="preserve"><value>إضافة بند مخصص</value></data>
   <data name="AddOneOffLineAction.AutomationProperties.Name" xml:space="preserve"><value>إضافة بند غير موجود في دليل الأصناف</value></data>
@@ -189,6 +191,7 @@
   <data name="LineRemoveAction.AutomationNameFormat" xml:space="preserve"><value>حذف بند {0}</value></data>
   <data name="MoneySar.Format" xml:space="preserve"><value>{0} ر.س</value></data>
   <data name="ValidationLinesRequired.Message" xml:space="preserve"><value>أضف بنداً واحداً على الأقل</value></data>
+  <data name="ValidationPaymentMethodRequired.Message" xml:space="preserve"><value>اختر طريقة الدفع</value></data>
   <data name="ValidationQuantityInvalid.Message" xml:space="preserve"><value>الكمية يجب أن تكون موجبة وبحد أقصى ثلاث منازل عشرية</value></data>
   <data name="ValidationUnitPriceInvalid.Message" xml:space="preserve"><value>سعر الوحدة غير صالح</value></data>
   <data name="ValidationExemptionRequired.Message" xml:space="preserve"><value>أدخل رمز وسبب الإعفاء أو النسبة الصفرية</value></data>

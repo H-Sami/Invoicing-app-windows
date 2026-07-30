@@ -41,6 +41,20 @@
             <CalendarDatePicker x:Name="BusinessDatePicker" HorizontalAlignment="Stretch" CalendarIdentifier="GregorianCalendar" DateChanged="BusinessDatePicker_DateChanged"
                                 localization:Localization.AutomationNameKey="BusinessDatePicker.AutomationProperties.Name" AutomationProperties.AutomationId="BusinessDate"/>
           </StackPanel>
+          <StackPanel Spacing="6">
+            <TextBlock localization:Localization.TextKey="InvoicePaymentMethodLabel.Text"/>
+            <ComboBox x:Name="PaymentMethodPicker" SelectedIndex="-1" HorizontalAlignment="Stretch"
+                      SelectionChanged="PaymentMethodPicker_SelectionChanged"
+                      localization:Localization.PlaceholderKey="InvoicePaymentMethodPicker.PlaceholderText"
+                      localization:Localization.AutomationNameKey="InvoicePaymentMethodPicker.AutomationProperties.Name"
+                      AutomationProperties.AutomationId="Invoice.PaymentMethod">
+              <ComboBoxItem localization:Localization.ContentKey="PaymentMethodCash.Content"/>
+              <ComboBoxItem localization:Localization.ContentKey="PaymentMethodCard.Content"/>
+              <ComboBoxItem localization:Localization.ContentKey="PaymentMethodBankTransfer.Content"/>
+              <ComboBoxItem localization:Localization.ContentKey="PaymentMethodCredit.Content"/>
+              <ComboBoxItem localization:Localization.ContentKey="PaymentMethodOther.Content"/>
+            </ComboBox>
+          </StackPanel>
         </StackPanel>
       </Border>
 

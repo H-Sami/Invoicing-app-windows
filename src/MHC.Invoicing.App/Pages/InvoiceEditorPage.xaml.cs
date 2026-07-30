@@ -192,6 +192,18 @@ public sealed partial class InvoiceEditorPage : Page, IDisposable
             _lifetime.Token));
     }
 
+    private async void PaymentMethodPicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (_rendering || PaymentMethodPicker.SelectedIndex < 0 || _workflow is null || _lifetime is null)
+        {
+            return;
+        }
+
+        await RunWorkflowAsync(() => _workflow.SetPaymentMethodAsync(
+            (PaymentMethod)(PaymentMethodPicker.SelectedIndex + 1),
+            _lifetime.Token));
+    }
+
     private async void SaveCustomerSnapshot_Click(object sender, RoutedEventArgs e)
     {
         if (_workflow is null || _lifetime is null)
@@ -399,6 +411,9 @@ public sealed partial class InvoiceEditorPage : Page, IDisposable
             CustomerVatNumber.Text = state.Draft.Customer.VatNumber ?? string.Empty;
             CustomerCommercialRegistration.Text = state.Draft.Customer.CommercialRegistration ?? string.Empty;
             CustomerAddress.Text = state.Draft.Customer.Address ?? string.Empty;
+            PaymentMethodPicker.SelectedIndex = Enum.IsDefined(state.Draft.PaymentMethod)
+                ? (int)state.Draft.PaymentMethod - 1
+                : -1;
             DraftBadge.Text = state.IssuedInvoice is null
                 ? L(isCreditNote ? "CreditNoteDraftBadge.Text" : "DraftBadge.Text")
                 : F("IssuedBadge.Format", state.IssuedInvoice.PublicNumber);
@@ -457,6 +472,7 @@ public sealed partial class InvoiceEditorPage : Page, IDisposable
             CatalogSearch.IsEnabled = !issued;
             AddOneOffLineButton.IsEnabled = !issued;
             BusinessDatePicker.IsEnabled = !issued;
+            PaymentMethodPicker.IsEnabled = !issued;
             RenderLines(state, issued);
         }
         finally
@@ -569,6 +585,7 @@ public sealed partial class InvoiceEditorPage : Page, IDisposable
     private static string TranslateValidation(InvoiceValidationError error) => error.Code switch
     {
         "required" when error.Field == "lines" => L("ValidationLinesRequired.Message"),
+        "invalid" when error.Field == "paymentMethod" => L("ValidationPaymentMethodRequired.Message"),
         "invalid" when error.Field.EndsWith("quantity", StringComparison.Ordinal) => L("ValidationQuantityInvalid.Message"),
         "invalid" when error.Field.EndsWith("unitPrice", StringComparison.Ordinal) => L("ValidationUnitPriceInvalid.Message"),
         "required" when error.Field.EndsWith("taxExemptionReason", StringComparison.Ordinal) => L("ValidationExemptionRequired.Message"),
@@ -584,7 +601,7 @@ public sealed partial class InvoiceEditorPage : Page, IDisposable
                 string name = LocalizationState.Language == "en-US" && !string.IsNullOrWhiteSpace(Customer.NameEnglish)
                     ? Customer.NameEnglish
                     : Customer.NameArabic;
-                return string.IsNullOrWhiteSpace(Customer.VatNumber) ? name : $"{name} — {Customer.VatNumber}";
+                return string.IsNullOrWhiteSpace(Customer.VatNumber) ? name : $"{name} - {Customer.VatNumber}";
             }
         }
     }
@@ -598,7 +615,7 @@ public sealed partial class InvoiceEditorPage : Page, IDisposable
                 string name = LocalizationState.Language == "en-US" && !string.IsNullOrWhiteSpace(Item.NameEnglish)
                     ? Item.NameEnglish
                     : Item.NameArabic;
-                return $"{name} — {FormatMoney(Item.DefaultUnitPrice)}";
+                return $"{name} - {FormatMoney(Item.DefaultUnitPrice)}";
             }
         }
     }

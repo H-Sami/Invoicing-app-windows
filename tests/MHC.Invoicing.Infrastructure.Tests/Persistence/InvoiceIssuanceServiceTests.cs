@@ -220,6 +220,32 @@ public sealed class InvoiceIssuanceServiceTests
     }
 
     [Fact]
+    public async Task IssueCreditNoteAsync_RejectsUnselectedPaymentWithoutConsumingNumber()
+    {
+        await using TestDatabase database = await TestDatabase.CreateAsync();
+        DateTimeOffset now = new(2026, 7, 23, 2, 0, 0, TimeSpan.Zero);
+        await database.SaveCompanyAsync();
+        DraftRecord saleDraft = CreateSaleDraft(now);
+        await database.SaveDraftAsync(saleDraft);
+        IssuedInvoice sale = await CreateService(database.ConnectionString, now)
+            .IssueSaleAsync(new IssueSaleRequest(saleDraft.Id, 0));
+        DraftRecord creditDraft = CreateCreditDraft(now, sale.Id, sale.Lines[0].Id, 1m) with
+        {
+            PaymentMethod = (PaymentMethod)0,
+        };
+        await database.SaveDraftAsync(creditDraft);
+
+        await Assert.ThrowsAsync<DomainValidationException>(() =>
+            CreateService(database.ConnectionString, now.AddMinutes(1))
+                .IssueCreditNoteAsync(new IssueCreditNoteRequest(creditDraft.Id, 0)));
+
+        await using MhcDbContext verification = database.CreateContext();
+        Assert.Single(await verification.Invoices.ToListAsync());
+        Assert.True(await verification.InvoiceDrafts.AnyAsync(draft => draft.Id == creditDraft.Id));
+        Assert.Equal(101, (await verification.InvoiceSequences.SingleAsync()).NextValue);
+    }
+
+    [Fact]
     public async Task IssueCreditNoteAsync_RejectsOriginalVoidedAfterDraftCreationWithoutConsumingNumber()
     {
         await using TestDatabase database = await TestDatabase.CreateAsync();

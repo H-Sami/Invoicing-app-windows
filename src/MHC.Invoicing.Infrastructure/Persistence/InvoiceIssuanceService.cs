@@ -157,6 +157,11 @@ public sealed class InvoiceIssuanceService(
             throw new DomainValidationException($"Issuance requires a persisted {expectedType} draft.");
         }
 
+        if (!Enum.IsDefined(draft.PaymentMethod))
+        {
+            throw new DomainValidationException("A payment method must be selected before issuance.");
+        }
+
         CompanyProfileEntity company = await context.CompanyProfiles
             .AsNoTracking()
             .SingleOrDefaultAsync(profile => profile.Id == 1, cancellationToken)

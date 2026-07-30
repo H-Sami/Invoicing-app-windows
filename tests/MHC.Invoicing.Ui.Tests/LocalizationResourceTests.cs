@@ -197,6 +197,52 @@ public sealed class LocalizationResourceTests
     }
 
     [Fact]
+    public void InvoiceEditorRequiresExplicitPaymentAndUsesPlainHyphensInSuggestions()
+    {
+        string pages = Path.Combine(FindRepositoryRoot(), "src", "MHC.Invoicing.App", "Pages");
+        XDocument editor = XDocument.Load(Path.Combine(pages, "InvoiceEditorPage.xaml"));
+        XElement payment = Assert.Single(
+            editor.Descendants(),
+            element => (string?)element.Attribute("AutomationProperties.AutomationId") == "Invoice.PaymentMethod");
+        Assert.Equal("PaymentMethodPicker_SelectionChanged", (string?)payment.Attribute("SelectionChanged"));
+        string settings = File.ReadAllText(Path.Combine(pages, "SettingsPage.xaml"));
+        Assert.DoesNotContain("DefaultPaymentMethodPicker", settings, StringComparison.Ordinal);
+        Assert.DoesNotContain("Settings.DefaultPaymentMethod", settings, StringComparison.Ordinal);
+
+        string source = File.ReadAllText(Path.Combine(pages, "InvoiceEditorPage.xaml.cs"));
+        int customerStart = source.IndexOf("private sealed record CustomerChoice", StringComparison.Ordinal);
+        int catalogStart = source.IndexOf("private sealed record CatalogChoice", customerStart, StringComparison.Ordinal);
+        int adapterStart = source.IndexOf("private sealed class LookupAdapter", catalogStart, StringComparison.Ordinal);
+        Assert.True(customerStart >= 0 && catalogStart > customerStart && adapterStart > catalogStart);
+        string suggestions = source[customerStart..adapterStart];
+        Assert.DoesNotContain(" — ", suggestions, StringComparison.Ordinal);
+        Assert.Contains("$\"{name} - {Customer.VatNumber}\"", suggestions, StringComparison.Ordinal);
+        Assert.Contains("$\"{name} - {FormatMoney(Item.DefaultUnitPrice)}\"", suggestions, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void DashboardRecentInvoicesUseStructuredBidiSafeFields()
+    {
+        string path = Path.Combine(
+            FindRepositoryRoot(), "src", "MHC.Invoicing.App", "Pages", "DashboardPage.xaml");
+        XNamespace presentation = "http://schemas.microsoft.com/winfx/2006/xaml/presentation";
+        XDocument dashboard = XDocument.Load(path);
+        XElement list = Assert.Single(
+            dashboard.Descendants(presentation + "ListView"),
+            element => (string?)element.Attribute("AutomationProperties.AutomationId") == "Dashboard.RecentInvoices");
+        XElement template = Assert.Single(list.Descendants(presentation + "DataTemplate"));
+        string templateText = template.ToString(SaveOptions.DisableFormatting);
+        foreach (string binding in new[] { "PublicNumber", "TypeAndStatus", "CustomerName", "BusinessDate", "Amount" })
+        {
+            Assert.Contains($"{{Binding {binding}}}", templateText, StringComparison.Ordinal);
+        }
+
+        Assert.True(
+            template.Descendants(presentation + "TextBlock").Count(
+                element => (string?)element.Attribute("FlowDirection") == "LeftToRight") >= 3);
+    }
+
+    [Fact]
     public void DashboardFailureStateAndIdentifierEditorLimitsAreExplicit()
     {
         string pages = Path.Combine(FindRepositoryRoot(), "src", "MHC.Invoicing.App", "Pages");

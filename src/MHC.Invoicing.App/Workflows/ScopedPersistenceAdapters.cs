@@ -3,7 +3,6 @@ using MHC.Invoicing.Application.Persistence;
 using MHC.Invoicing.Application.Workflows;
 using MHC.Invoicing.Domain.Catalog;
 using MHC.Invoicing.Domain.Customers;
-using MHC.Invoicing.Domain.Invoices;
 using MHC.Invoicing.Infrastructure.Persistence;
 using MHC.Invoicing.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -169,8 +168,6 @@ internal sealed class ScopedInvoiceEditorCompanyProfile(
         await using MhcDbContext context = ScopedPersistence.CreateContext(connectionString);
         VersionedCompanyProfile? profile = await new CompanyProfileRepository(context)
             .GetAsync(cancellationToken);
-        return new InvoiceEditorCompanyProfile(
-            profile is not null,
-            profile?.Profile.DefaultPaymentMethod ?? PaymentMethod.Cash);
+        return new InvoiceEditorCompanyProfile(profile is not null);
     }
 }

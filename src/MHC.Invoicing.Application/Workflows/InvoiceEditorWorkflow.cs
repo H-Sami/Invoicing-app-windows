@@ -46,7 +46,7 @@ public interface IInvoiceEditorDocuments
     Task<bool> ExportAsync(IssuedInvoiceReference invoice, CancellationToken cancellationToken = default);
 }
 
-public sealed record InvoiceEditorCompanyProfile(bool IsReady, PaymentMethod DefaultPaymentMethod);
+public sealed record InvoiceEditorCompanyProfile(bool IsReady);
 
 public interface IInvoiceEditorCompanyProfile
 {
@@ -150,7 +150,7 @@ public sealed class InvoiceEditorWorkflow
                 return;
             }
 
-            DraftRecord draft = CreateDraft(_timeProvider.GetUtcNow(), profile.DefaultPaymentMethod);
+            DraftRecord draft = CreateDraft(_timeProvider.GetUtcNow());
             VersionedDraft saved = await _repository.SaveAsync(draft, null, cancellationToken).ConfigureAwait(false);
             State = CreateState(saved.Draft, saved.Revision, InvoiceEditorSaveStatus.Saved, profile.IsReady);
         }
@@ -243,6 +243,20 @@ public sealed class InvoiceEditorWorkflow
 
     public Task SetBusinessDateAsync(DateOnly businessDate, CancellationToken cancellationToken = default) =>
         SaveMutationAsync(draft => draft with { BusinessDate = businessDate }, cancellationToken);
+
+    public Task SetPaymentMethodAsync(
+        PaymentMethod paymentMethod,
+        CancellationToken cancellationToken = default)
+    {
+        if (!Enum.IsDefined(paymentMethod))
+        {
+            throw new ArgumentOutOfRangeException(nameof(paymentMethod));
+        }
+
+        return SaveMutationAsync(
+            draft => draft with { PaymentMethod = paymentMethod },
+            cancellationToken);
+    }
 
     public async Task UpdateLineAsync(
         Guid lineId,
@@ -404,9 +418,7 @@ public sealed class InvoiceEditorWorkflow
         }
     }
 
-    private static DraftRecord CreateDraft(
-        DateTimeOffset now,
-        PaymentMethod paymentMethod = PaymentMethod.Cash)
+    private static DraftRecord CreateDraft(DateTimeOffset now)
     {
         DateTimeOffset utcNow = now.ToUniversalTime();
         return new DraftRecord(
@@ -416,7 +428,7 @@ public sealed class InvoiceEditorWorkflow
             null,
             DateOnly.FromDateTime(SaudiTime.ToLocal(utcNow).DateTime),
             new DraftParty("عميل نقدي", null, null, null, null),
-            paymentMethod,
+            (PaymentMethod)0,
             null,
             null,
             false,
@@ -431,6 +443,9 @@ public sealed class InvoiceEditorWorkflow
         InvoiceEditorSaveStatus saveStatus,
         bool isCompanyProfileReady)
     {
+        InvoiceValidationError[] paymentErrors = Enum.IsDefined(draft.PaymentMethod)
+            ? []
+            : [new InvoiceValidationError("paymentMethod", "invalid", "Select a payment method.")];
         if (draft.Lines.Count == 0)
         {
             return new InvoiceEditorState(
@@ -440,7 +455,10 @@ public sealed class InvoiceEditorWorkflow
                 Money.Zero,
                 Money.Zero,
                 Money.Zero,
-                [new InvoiceValidationError("lines", "required", "At least one invoice line is required.")],
+                [
+                    new InvoiceValidationError("lines", "required", "At least one invoice line is required."),
+                    .. paymentErrors,
+                ],
                 null,
                 isCompanyProfileReady);
         }
@@ -455,7 +473,7 @@ public sealed class InvoiceEditorWorkflow
                 calculation.Totals.Subtotal,
                 calculation.Totals.Vat,
                 calculation.Totals.GrandTotal,
-                [],
+                paymentErrors,
                 null,
                 isCompanyProfileReady);
         }
@@ -468,7 +486,7 @@ public sealed class InvoiceEditorWorkflow
                 Money.Zero,
                 Money.Zero,
                 Money.Zero,
-                [new InvoiceValidationError("lines", "invalid", exception.Message)],
+                [new InvoiceValidationError("lines", "invalid", exception.Message), .. paymentErrors],
                 null,
                 isCompanyProfileReady);
         }
