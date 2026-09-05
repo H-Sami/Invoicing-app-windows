@@ -1,4 +1,4 @@
-# MHC Invoices V4
+# Invoices App
 
 A modern, offline-first Windows 11 invoicing application.
 ## Product goals
