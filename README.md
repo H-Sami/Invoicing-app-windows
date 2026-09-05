@@ -1,7 +1,6 @@
 # MHC Invoices V4
 
-A modern, offline-first Windows 11 invoicing application for MHC Technology.
-
+A modern, offline-first Windows 11 invoicing application.
 ## Product goals
 
 - Arabic-first RTL interface with optional English UI
